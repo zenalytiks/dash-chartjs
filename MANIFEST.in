@@ -1,0 +1,11 @@
+include dash_chartjs/dash_chartjs.min.js
+include dash_chartjs/dash_chartjs.min.js.map
+include dash_chartjs/async-*.js
+include dash_chartjs/async-*.js.map
+include dash_chartjs/*-shared.js
+include dash_chartjs/*-shared.js.map
+include dash_chartjs/metadata.json
+include dash_chartjs/package-info.json
+include README.md
+include LICENSE
+include package.json

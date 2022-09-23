@@ -1,0 +1,16 @@
+#chart-1 canvas{
+    height: 300px;
+}
+
+#chart-3 canvas{
+    max-height: 300px;
+}
+
+#chart-4 canvas{
+    height: 300px;
+}
+
+#chart-2 canvas{
+    max-height: 300px;
+}
+

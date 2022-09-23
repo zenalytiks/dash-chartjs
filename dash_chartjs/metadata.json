@@ -1,0 +1,52 @@
+{
+  "src/lib/components/ChartJs.react.js": {
+    "description": "This component renders ChartJs React component inside Dash App.",
+    "displayName": "ChartJs",
+    "methods": [],
+    "props": {
+      "id": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "The ID used to identify this component in Dash callbacks."
+      },
+      "type": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "Chart.js chart type"
+      },
+      "data": {
+        "type": {
+          "name": "object"
+        },
+        "required": false,
+        "description": "The data object that is passed into the Chart.js chart",
+        "defaultValue": {
+          "value": "{\r\n    datasets: []\r\n}",
+          "computed": false
+        }
+      },
+      "options": {
+        "type": {
+          "name": "object"
+        },
+        "required": false,
+        "description": "The options object that is passed into the Chart.js chart",
+        "defaultValue": {
+          "value": "{}",
+          "computed": false
+        }
+      },
+      "setProps": {
+        "type": {
+          "name": "func"
+        },
+        "required": false,
+        "description": "Dash-assigned callback that should be called to report property changes\r\nto Dash, to make them available for callbacks."
+      }
+    }
+  }
+}
