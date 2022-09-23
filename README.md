@@ -5,7 +5,8 @@ Dash Chartjs Component is a Dash component library that renders [ChartJs React c
 
 ## Demo
 
-![Dash_Chartjs_Component](https://user-images.githubusercontent.com/31138706/192034765-c04d3b25-f6ba-4ad3-8511-a41a50e94e96.mp4)
+
+https://user-images.githubusercontent.com/31138706/192035295-0a10eb80-0881-443b-8ea8-7dfd98eb77f3.mp4
 
 
 Get started with:
