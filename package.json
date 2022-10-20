@@ -25,6 +25,8 @@
   "license": "MIT",
   "dependencies": {
     "chart.js": "^3.9.1",
+    "chartjs-adapter-moment": "^1.0.0",
+    "moment": "^2.29.4",
     "ramda": "^0.26.1",
     "react-chartjs-2": "^4.3.1"
   },

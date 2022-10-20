@@ -5,6 +5,7 @@ import { Chart as ChartJS, registerables } from 'chart.js';
 ChartJS.register(...registerables);
 
 import { Chart } from 'react-chartjs-2';
+import 'chartjs-adapter-moment';
 
 
 
