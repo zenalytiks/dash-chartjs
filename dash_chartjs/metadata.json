@@ -40,6 +40,13 @@
           "computed": false
         }
       },
+      "style": {
+        "type": {
+          "name": "object"
+        },
+        "required": false,
+        "description": "Defines CSS styles which will override styles previously set."
+      },
       "setProps": {
         "type": {
           "name": "func"

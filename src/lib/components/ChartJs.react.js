@@ -14,10 +14,13 @@ import 'chartjs-adapter-moment';
  */
 export default class ChartJs extends Component {
     render() {
-        const {id, type, data, options} = this.props;
+        const {id, style, type, data, options} = this.props;
 
         return (
-            <div id={id}>
+            <div 
+                id={id}
+                style={style}
+            >
                 <Chart
                     type = {type}
                     data = {data}
@@ -57,6 +60,11 @@ ChartJs.propTypes = {
      * The options object that is passed into the Chart.js chart
      */
     options: PropTypes.object,
+
+    /**
+     * Defines CSS styles which will override styles previously set.
+     */
+    style: PropTypes.object,
 
     /**
      * Dash-assigned callback that should be called to report property changes

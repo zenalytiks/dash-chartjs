@@ -18,6 +18,9 @@ Keyword arguments:
 - options (dict; optional):
     The options object that is passed into the Chart.js chart.
 
+- style (dict; optional):
+    Defines CSS styles which will override styles previously set.
+
 - type (string; optional):
     Chart.js chart type."""
     _children_props = []
@@ -25,10 +28,10 @@ Keyword arguments:
     _namespace = 'dash_chartjs'
     _type = 'ChartJs'
     @_explicitize_args
-    def __init__(self, id=Component.UNDEFINED, type=Component.UNDEFINED, data=Component.UNDEFINED, options=Component.UNDEFINED, **kwargs):
-        self._prop_names = ['id', 'data', 'options', 'type']
+    def __init__(self, id=Component.UNDEFINED, type=Component.UNDEFINED, data=Component.UNDEFINED, options=Component.UNDEFINED, style=Component.UNDEFINED, **kwargs):
+        self._prop_names = ['id', 'data', 'options', 'style', 'type']
         self._valid_wildcard_attributes =            []
-        self.available_properties = ['id', 'data', 'options', 'type']
+        self.available_properties = ['id', 'data', 'options', 'style', 'type']
         self.available_wildcard_properties =            []
         _explicit_args = kwargs.pop('_explicit_args')
         _locals = locals()

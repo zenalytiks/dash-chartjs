@@ -10,7 +10,7 @@ This component renders ChartJs React component inside Dash App.
 }
 
 \usage{
-''ChartJs(id=NULL, data=NULL, options=NULL, type=NULL)
+''ChartJs(id=NULL, data=NULL, options=NULL, style=NULL, type=NULL)
 }
 
 \arguments{
@@ -19,6 +19,8 @@ This component renders ChartJs React component inside Dash App.
 \item{data}{Named list. The data object that is passed into the Chart.js chart}
 
 \item{options}{Named list. The options object that is passed into the Chart.js chart}
+
+\item{style}{Named list. Defines CSS styles which will override styles previously set.}
 
 \item{type}{Character. Chart.js chart type}
 }
