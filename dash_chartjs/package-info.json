@@ -1,6 +1,6 @@
 {
   "name": "dash_chartjs",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "description": "A Dash Component for React's ChartJs library.",
   "repository": {
     "type": "git",
@@ -26,6 +26,7 @@
   "dependencies": {
     "chart.js": "^3.9.1",
     "chartjs-adapter-moment": "^1.0.0",
+    "chartjs-plugin-zoom": "^1.2.1",
     "moment": "^2.29.4",
     "ramda": "^0.26.1",
     "react-chartjs-2": "^4.3.1"

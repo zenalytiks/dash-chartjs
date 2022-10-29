@@ -2,10 +2,12 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
 import { Chart as ChartJS, registerables } from 'chart.js';
-ChartJS.register(...registerables);
-
 import { Chart } from 'react-chartjs-2';
+
 import 'chartjs-adapter-moment';
+import zoomPlugin from 'chartjs-plugin-zoom';
+
+ChartJS.register(...registerables,zoomPlugin);
 
 
 
