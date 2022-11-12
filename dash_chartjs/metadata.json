@@ -40,6 +40,17 @@
           "computed": false
         }
       },
+      "clickData": {
+        "type": {
+          "name": "object"
+        },
+        "required": false,
+        "description": "clickData returns the datasetIndex and index of data point clicked.",
+        "defaultValue": {
+          "value": "{}",
+          "computed": false
+        }
+      },
       "style": {
         "type": {
           "name": "object"

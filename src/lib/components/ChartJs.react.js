@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
 import { Chart as ChartJS, registerables } from 'chart.js';
-import { Chart } from 'react-chartjs-2';
+import { Chart, getElementAtEvent } from 'react-chartjs-2';
 
 import 'chartjs-adapter-moment';
 import zoomPlugin from 'chartjs-plugin-zoom';
@@ -15,18 +15,33 @@ ChartJS.register(...registerables,zoomPlugin);
  * This component renders ChartJs React component inside Dash App.
  */
 export default class ChartJs extends Component {
+    constructor(props) {
+        super(props);
+        this.chartRef = React.createRef();
+      }
+    
     render() {
-        const {id, style, type, data, options} = this.props;
-
+        // eslint-disable-next-line no-unused-vars
+        const {id, setProps, style, type, data, options, clickData} = this.props;
         return (
             <div 
                 id={id}
                 style={style}
             >
                 <Chart
+                    ref={this.chartRef}
                     type = {type}
                     data = {data}
                     options = {options}
+                    onClick = {(event) => {
+                        var ele = getElementAtEvent(this.chartRef.current,event)
+                        setProps({
+                            clickData: {
+                                datasetIndex: ele[0].datasetIndex,
+                                index: ele[0].index
+                            }
+                        })
+                    }}
                 />
                 
             </div>
@@ -38,7 +53,8 @@ ChartJs.defaultProps = {
     data: {
         datasets: []
     },
-    options: {}
+    options: {},
+    clickData: {}
 };
 
 ChartJs.propTypes = {
@@ -62,6 +78,11 @@ ChartJs.propTypes = {
      * The options object that is passed into the Chart.js chart
      */
     options: PropTypes.object,
+
+    /**
+     * clickData returns the datasetIndex and index of data point clicked.
+     */
+    clickData: PropTypes.object,
 
     /**
      * Defines CSS styles which will override styles previously set.

@@ -12,6 +12,10 @@ Keyword arguments:
 - id (string; optional):
     The ID used to identify this component in Dash callbacks.
 
+- clickData (dict; optional):
+    clickData returns the datasetIndex and index of data point
+    clicked.
+
 - data (dict; default {    datasets: []}):
     The data object that is passed into the Chart.js chart.
 
@@ -28,10 +32,10 @@ Keyword arguments:
     _namespace = 'dash_chartjs'
     _type = 'ChartJs'
     @_explicitize_args
-    def __init__(self, id=Component.UNDEFINED, type=Component.UNDEFINED, data=Component.UNDEFINED, options=Component.UNDEFINED, style=Component.UNDEFINED, **kwargs):
-        self._prop_names = ['id', 'data', 'options', 'style', 'type']
+    def __init__(self, id=Component.UNDEFINED, type=Component.UNDEFINED, data=Component.UNDEFINED, options=Component.UNDEFINED, clickData=Component.UNDEFINED, style=Component.UNDEFINED, **kwargs):
+        self._prop_names = ['id', 'clickData', 'data', 'options', 'style', 'type']
         self._valid_wildcard_attributes =            []
-        self.available_properties = ['id', 'data', 'options', 'style', 'type']
+        self.available_properties = ['id', 'clickData', 'data', 'options', 'style', 'type']
         self.available_wildcard_properties =            []
         _explicit_args = kwargs.pop('_explicit_args')
         _locals = locals()

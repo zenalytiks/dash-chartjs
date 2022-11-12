@@ -10,11 +10,14 @@ This component renders ChartJs React component inside Dash App.
 }
 
 \usage{
-''ChartJs(id=NULL, data=NULL, options=NULL, style=NULL, type=NULL)
+''ChartJs(id=NULL, clickData=NULL, data=NULL, options=NULL,
+style=NULL, type=NULL)
 }
 
 \arguments{
 \item{id}{Character. The ID used to identify this component in Dash callbacks.}
+
+\item{clickData}{Named list. clickData returns the datasetIndex and index of data point clicked.}
 
 \item{data}{Named list. The data object that is passed into the Chart.js chart}
 
