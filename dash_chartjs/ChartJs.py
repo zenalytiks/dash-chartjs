@@ -25,6 +25,9 @@ Keyword arguments:
 - style (dict; optional):
     Defines CSS styles which will override styles previously set.
 
+- toolbox (boolean; default True):
+    Toolbox with reset and download buttons for chart.
+
 - type (string; optional):
     Chart.js chart type."""
     _children_props = []
@@ -32,10 +35,10 @@ Keyword arguments:
     _namespace = 'dash_chartjs'
     _type = 'ChartJs'
     @_explicitize_args
-    def __init__(self, id=Component.UNDEFINED, type=Component.UNDEFINED, data=Component.UNDEFINED, options=Component.UNDEFINED, clickData=Component.UNDEFINED, style=Component.UNDEFINED, **kwargs):
-        self._prop_names = ['id', 'clickData', 'data', 'options', 'style', 'type']
+    def __init__(self, id=Component.UNDEFINED, type=Component.UNDEFINED, data=Component.UNDEFINED, options=Component.UNDEFINED, toolbox=Component.UNDEFINED, clickData=Component.UNDEFINED, style=Component.UNDEFINED, **kwargs):
+        self._prop_names = ['id', 'clickData', 'data', 'options', 'style', 'toolbox', 'type']
         self._valid_wildcard_attributes =            []
-        self.available_properties = ['id', 'clickData', 'data', 'options', 'style', 'type']
+        self.available_properties = ['id', 'clickData', 'data', 'options', 'style', 'toolbox', 'type']
         self.available_wildcard_properties =            []
         _explicit_args = kwargs.pop('_explicit_args')
         _locals = locals()

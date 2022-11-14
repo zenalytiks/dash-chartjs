@@ -18,16 +18,48 @@ export default class ChartJs extends Component {
     constructor(props) {
         super(props);
         this.chartRef = React.createRef();
-      }
+        this.state = {
+            visibility: 'hidden'
+        }
+    }
+    downloadChart() {
+        const link = document.createElement('a');
+        link.download = "chart.png";
+        link.href = this.chartRef.current.toBase64Image('image/png', 1);
+        link.click();
+    }
+    resetChart() {
+        this.chartRef.current.resetZoom('active');
+    }
+    handleOnMouseEnter() {
+        this.setState({visibility:'visible'})
+    }
+    handleOnMouseLeave() {
+        this.setState({visibility:'hidden'})
+    }
     
     render() {
         // eslint-disable-next-line no-unused-vars
-        const {id, setProps, style, type, data, options, clickData} = this.props;
+        const {id, setProps, style, type, data, options, toolbox, clickData} = this.props;
         return (
             <div 
                 id={id}
                 style={style}
+                onMouseEnter={this.handleOnMouseEnter.bind(this)}
+                onMouseLeave={this.handleOnMouseLeave.bind(this)}
             >
+                {toolbox ?
+                <div style={{visibility:this.state.visibility,
+                             backgroundColor: 'rgba(0,0,0,0.1)',
+                             borderRadius:'5px',
+                             float:'right'}}>
+                    <button style={{background:'rgba(0,0,0,0)',border:'none',padding:'0px 5px 0px 5px'}} title='Download' value='print' onClick={this.downloadChart.bind(this)}>&#11123;</button>
+    
+                    <button style={{background:'rgba(0,0,0,0)',border:'none',padding:'0px 5px 0px 5px'}} title='Reset' onClick={this.resetChart.bind(this)}>&#8634;</button>
+                </div>
+                : null
+                }
+                
                 <Chart
                     ref={this.chartRef}
                     type = {type}
@@ -54,7 +86,8 @@ ChartJs.defaultProps = {
         datasets: []
     },
     options: {},
-    clickData: {}
+    clickData: {},
+    toolbox: true
 };
 
 ChartJs.propTypes = {
@@ -78,6 +111,11 @@ ChartJs.propTypes = {
      * The options object that is passed into the Chart.js chart
      */
     options: PropTypes.object,
+
+    /**
+     * Toolbox with reset and download buttons for chart
+     */
+    toolbox: PropTypes.bool,
 
     /**
      * clickData returns the datasetIndex and index of data point clicked.

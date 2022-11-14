@@ -1,36 +1,51 @@
 from dash_chartjs import ChartJs
 import dash
 from dash import html, Input, Output
+import dash_bootstrap_components as dbc
 import random
 
-app = dash.Dash(__name__,meta_tags=[{"name": "viewport", "content": "width=device-width, initial-scale=1"}])
+app = dash.Dash(__name__,external_stylesheets=[dbc.themes.BOOTSTRAP],meta_tags=[{"name": "viewport", "content": "width=device-width, initial-scale=1"}])
 
 
 
-app.layout = html.Div([
+app.layout = dbc.Container([
+    html.H1('Dash ChartJs Component',className='text-center'),
+    dbc.Button(id='gen-rand',children='Generate Random',n_clicks=0),
     
-    html.Table(
-        [
-          html.H1('Dash ChartJs Component'),
-          html.Button(id='gen-rand',children='Generate Random',n_clicks=0),
-            html.Tr(
+    dbc.Row(
+      [
+          dbc.Col(
               [
-                html.Td(ChartJs(id='chart-1',type='line')),
-                html.Td(ChartJs(id='chart-3',type='pie')),
-
-              ]
-            ),
-            html.Tr(
+                  ChartJs(id='chart-1',type='line')
+                
+              ],md=6
+          ),
+          dbc.Col(
               [
-                html.Td(ChartJs(id='chart-2',type='radar')),
-                html.Td(ChartJs(id='chart-4',type='bar'))
-              ]
-            )
-            
-        ],style={'margin-left':'auto','margin-right':'auto'}
+                  ChartJs(id='chart-3',type='pie')
+                  
+              ],md=6
+          )
+      ]
+    ),
+    dbc.Row(
+      [
+          dbc.Col(
+              [
+                  ChartJs(id='chart-2',type='radar')
+                  
+              ],md=6
+          ),
+          dbc.Col(
+              [
+                  ChartJs(id='chart-4',type='bar')
+                  
+              ],md=6
+          )
+      ]
     )
-  
-],style={'width':'100%'})
+    
+])
 
 
 @app.callback(
@@ -80,6 +95,14 @@ def display_output(n):
                 'display': True,
                 'text': 'Chart.js Line Chart'
               },
+              'zoom':{
+                'zoom':{
+                  'wheel':{
+                    'enabled': True
+                  },
+                  'mode':'xy'
+                }
+              }
             },
             'interaction': {
               'mode': 'index',
@@ -198,6 +221,14 @@ def display_output(n):
             'plugins': {
               'legend': {
                 'position': 'top',
+              },
+              'zoom':{
+                'zoom':{
+                  'wheel':{
+                    'enabled': True
+                  },
+                  'mode':'xy'
+                }
               },
               'title': {
                 'display': True,

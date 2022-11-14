@@ -13,10 +13,11 @@ Keyword arguments:
 - `data` (Dict; optional): The data object that is passed into the Chart.js chart
 - `options` (Dict; optional): The options object that is passed into the Chart.js chart
 - `style` (Dict; optional): Defines CSS styles which will override styles previously set.
+- `toolbox` (Bool; optional): Toolbox with reset and download buttons for chart
 - `type` (String; optional): Chart.js chart type
 """
 function ''_chartjs(; kwargs...)
-        available_props = Symbol[:id, :clickData, :data, :options, :style, :type]
+        available_props = Symbol[:id, :clickData, :data, :options, :style, :toolbox, :type]
         wild_props = Symbol[]
         return Component("''_chartjs", "ChartJs", "dash_chartjs", available_props, wild_props; kwargs...)
 end
