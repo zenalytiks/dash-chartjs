@@ -10,7 +10,7 @@ pip install dash-chartjs
 ```
 ## Basic Usage
 
-```
+```python
 from dash import dash,html
 import pandas as pd
 from dash_chartjs import ChartJs
