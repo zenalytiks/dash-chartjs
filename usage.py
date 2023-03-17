@@ -4,6 +4,7 @@ from dash import html, Input, Output
 import dash_bootstrap_components as dbc
 import random
 
+dash._dash_renderer._set_react_version("18.2.0")
 app = dash.Dash(__name__,external_stylesheets=[dbc.themes.BOOTSTRAP],meta_tags=[{"name": "viewport", "content": "width=device-width, initial-scale=1"}])
 
 

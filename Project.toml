@@ -1,8 +1,8 @@
 
 name = "DashChartjs"
 uuid = "1b08a953-4be3-4667-9a23-5e6f6f0b01a8"
-authors = ["Waleed Malik <zenalytiks@gmail.com>"]
-version = "0.0.5"
+authors = ["Waleed Malik <waleed@zenalytiks.com>"]
+version = "0.0.6"
 
 [deps]
 Dash = "1b08a953-4be3-4667-9a23-3db579824955"

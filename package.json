@@ -1,6 +1,6 @@
 {
   "name": "dash_chartjs",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "A Dash Component library for ChartJs.",
   "repository": {
     "type": "git",
@@ -21,7 +21,7 @@
     "build": "npm run build:js && npm run build:backends",
     "build:activated": "npm run build:js && npm run build:backends-activated"
   },
-  "author": "Waleed Malik <zenalytiks@gmail.com>",
+  "author": "Waleed Malik <waleed@zenalytiks.com>",
   "license": "MIT",
   "dependencies": {
     "chart.js": "^3.9.1",
@@ -47,9 +47,9 @@
     "eslint-plugin-import": "^2.18.0",
     "eslint-plugin-react": "^7.14.2",
     "prop-types": "^15.7.2",
-    "react": "^16.8.6",
+    "react": "^18.2.0",
     "react-docgen": "^4.1.1",
-    "react-dom": "^16.8.6",
+    "react-dom": "^18.2.0",
     "style-loader": "^0.23.1",
     "styled-jsx": "^3.2.1",
     "terser-webpack-plugin": "^2.3.0",
