@@ -11,16 +11,16 @@ pip install dash-chartjs
 
 ## Prop List
     
-**id:** The ID used to identify this component in Dash callbacks.
-**type:** Chart.js chart type.
-**data:** The data object that is passed into the Chart.js chart.
-**options:** The options object that is passed into the Chart.js chart.
-**toolbox:** Toolbox with reset and download buttons for chart.
-**linearGradientList:** List of colors for the Linear Gradient.
-**linearGradientDirection:** Set the direction of Linear Gradient. Either 'horizontal' or 'vertical'. Vertical is default.
-**useGradient:** Apply Linear Gradient on 'borderColor', 'backgroundColor' or on 'both'. Applies on both by default.
-**clickData:** clickData returns the datasetIndex and index of data point clicked.
-**style:** Defines CSS styles which will override styles previously set.
+**id:** The ID used to identify this component in Dash callbacks.<br>
+**type:** Chart.js chart type.<br>
+**data:** The data object that is passed into the Chart.js chart.<br>
+**options:** The options object that is passed into the Chart.js chart.<br>
+**toolbox:** Toolbox with reset and download buttons for chart.<br>
+**linearGradientList:** List of colors for the Linear Gradient.<br>
+**linearGradientDirection:** Set the direction of Linear Gradient. Either 'horizontal' or 'vertical'. Vertical is default.<br>
+**useGradient:** Apply Linear Gradient on 'borderColor', 'backgroundColor' or on 'both'. Applies on both by default.<br>
+**clickData:** clickData returns the datasetIndex and index of data point clicked.<br>
+**style:** Defines CSS styles which will override styles previously set.<br>
 
 ## Basic Usage
 
