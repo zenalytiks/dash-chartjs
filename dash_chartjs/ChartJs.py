@@ -19,6 +19,13 @@ Keyword arguments:
 - data (dict; default {    datasets: []}):
     The data object that is passed into the Chart.js chart.
 
+- linearGradientDirection (a value equal to: 'vertical', 'horizontal'; default 'vertical'):
+    Set the direction of Linear Gradient. Either 'horizontal' or
+    'vertical'. Vertical is default.
+
+- linearGradientList (list; optional):
+    List of colors for the Linear Gradient.
+
 - options (dict; optional):
     The options object that is passed into the Chart.js chart.
 
@@ -29,16 +36,20 @@ Keyword arguments:
     Toolbox with reset and download buttons for chart.
 
 - type (string; optional):
-    Chart.js chart type."""
+    Chart.js chart type.
+
+- useGradient (a value equal to: 'borderColor', 'backgroundColor', 'both'; default 'both'):
+    Apply Linear Gradient on 'borderColor', 'backgroundColor' or on
+    'both'. Applies on both by default."""
     _children_props = []
     _base_nodes = ['children']
     _namespace = 'dash_chartjs'
     _type = 'ChartJs'
     @_explicitize_args
-    def __init__(self, id=Component.UNDEFINED, type=Component.UNDEFINED, data=Component.UNDEFINED, options=Component.UNDEFINED, toolbox=Component.UNDEFINED, clickData=Component.UNDEFINED, style=Component.UNDEFINED, **kwargs):
-        self._prop_names = ['id', 'clickData', 'data', 'options', 'style', 'toolbox', 'type']
+    def __init__(self, id=Component.UNDEFINED, type=Component.UNDEFINED, data=Component.UNDEFINED, options=Component.UNDEFINED, toolbox=Component.UNDEFINED, linearGradientList=Component.UNDEFINED, linearGradientDirection=Component.UNDEFINED, useGradient=Component.UNDEFINED, clickData=Component.UNDEFINED, style=Component.UNDEFINED, **kwargs):
+        self._prop_names = ['id', 'clickData', 'data', 'linearGradientDirection', 'linearGradientList', 'options', 'style', 'toolbox', 'type', 'useGradient']
         self._valid_wildcard_attributes =            []
-        self.available_properties = ['id', 'clickData', 'data', 'options', 'style', 'toolbox', 'type']
+        self.available_properties = ['id', 'clickData', 'data', 'linearGradientDirection', 'linearGradientList', 'options', 'style', 'toolbox', 'type', 'useGradient']
         self.available_wildcard_properties =            []
         _explicit_args = kwargs.pop('_explicit_args')
         _locals = locals()

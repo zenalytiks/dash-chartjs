@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {useRef, useState, useEffect} from 'react';
 import PropTypes from 'prop-types';
 
 import { Chart as ChartJS, registerables } from 'chart.js';
@@ -14,72 +14,130 @@ ChartJS.register(...registerables,zoomPlugin);
 /**
  * This component renders ChartJs React component inside Dash App.
  */
-export default class ChartJs extends Component {
-    constructor(props) {
-        super(props);
-        this.chartRef = React.createRef();
-        this.state = {
-            visibility: 'hidden'
-        }
-    }
-    downloadChart() {
+export default function ChartJs(props) {
+    const { id, setProps, style, type, data, options, toolbox, linearGradientList, linearGradientDirection, useGradient, clickData } = props;
+
+    const [visibility, setVisibility] = useState('hidden');
+    const chartRef = useRef(null);
+
+    const downloadChart = () => {
         const link = document.createElement('a');
         link.download = "chart.png";
-        link.href = this.chartRef.current.toBase64Image('image/png', 1);
+        link.href = chartRef.current.toBase64Image('image/png', 1);
         link.click();
-    }
-    resetChart() {
-        this.chartRef.current.resetZoom('active');
-    }
-    handleOnMouseEnter() {
-        this.setState({visibility:'visible'})
-    }
-    handleOnMouseLeave() {
-        this.setState({visibility:'hidden'})
+    };
+
+    const resetChart = () => {
+        chartRef.current.resetZoom('active');
+    };
+
+    const handleOnMouseEnter = () => {
+        setVisibility('visible');
+    };
+
+    const handleOnMouseLeave = () => {
+        setVisibility('hidden');
+    };
+    const createGradient = (ctx, area, colors) => {
+        const isVertical = linearGradientDirection === "vertical";
+
+        const gradient = isVertical
+          ? ctx.createLinearGradient(0, area.bottom, 0, area.top)
+          : ctx.createLinearGradient(area.left, 0, area.right, 0);   
+    
+
+
+        const step = 1 / (colors.length - 1);
+      
+        colors.forEach((color, index) => {
+          gradient.addColorStop(index * step, color);
+        });
+      
+        return gradient;
     }
     
-    render() {
-        // eslint-disable-next-line no-unused-vars
-        const {id, setProps, style, type, data, options, toolbox, clickData} = this.props;
-        return (
-            <div 
-                id={id}
-                style={style}
-                onMouseEnter={this.handleOnMouseEnter.bind(this)}
-                onMouseLeave={this.handleOnMouseLeave.bind(this)}
-            >
-                {toolbox ?
-                <div style={{visibility:this.state.visibility,
-                             backgroundColor: 'rgba(0,0,0,0.1)',
-                             borderRadius:'5px',
-                             float:'right'}}>
-                    <button style={{background:'rgba(0,0,0,0)',border:'none',padding:'0px 5px 0px 5px'}} title='Download' value='print' onClick={this.downloadChart.bind(this)}>&#11123;</button>
+    useEffect(() => {
+        const chart = chartRef.current;
     
-                    <button style={{background:'rgba(0,0,0,0)',border:'none',padding:'0px 5px 0px 5px'}} title='Reset' onClick={this.resetChart.bind(this)}>&#8634;</button>
-                </div>
-                : null
-                }
-                
-                <Chart
-                    ref={this.chartRef}
-                    type = {type}
-                    data = {data}
-                    options = {options}
-                    onClick = {(event) => {
-                        var ele = getElementAtEvent(this.chartRef.current,event)
-                        setProps({
-                            clickData: {
-                                datasetIndex: ele[0].datasetIndex,
-                                index: ele[0].index
-                            }
-                        })
+        if (chart && linearGradientList && linearGradientList.length > 0) {
+
+          const chartData = {
+            ...data,
+            datasets: data.datasets.map((dataset) => {
+              const applyBackgroundColor = useGradient === 'backgroundColor' || useGradient === 'both';
+              const applyBorderColor = useGradient === 'borderColor' || useGradient === 'both';
+    
+              return {
+                ...dataset,
+                backgroundColor: applyBackgroundColor
+                  ? createGradient(chart.ctx, chart.chartArea, linearGradientList)
+                  : dataset.backgroundColor,
+                borderColor: applyBorderColor
+                  ? createGradient(chart.ctx, chart.chartArea, linearGradientList)
+                  : dataset.borderColor,
+              };
+            }),
+          };
+    
+          chart.data = chartData;
+          chart.update();
+        }
+    }, [data, linearGradientList, linearGradientDirection, useGradient]);
+
+    
+    return (
+        <div
+            id={id}
+            style={style}
+            onMouseEnter={handleOnMouseEnter}
+            onMouseLeave={handleOnMouseLeave}
+        >
+            {toolbox ? (
+                <div
+                    style={{
+                        visibility: visibility,
+                        backgroundColor: 'rgba(0,0,0,0.1)',
+                        borderRadius: '5px',
+                        float: 'right'
                     }}
-                />
-                
-            </div>
-        );
-    }
-}
+                >
+                    <button
+                        style={{ background: 'rgba(0,0,0,0)', border: 'none', padding: '0px 5px 0px 5px' }}
+                        title='Download'
+                        value='print'
+                        onClick={downloadChart}
+                    >
+                        &#11123;
+                    </button>
+
+                    <button
+                        style={{ background: 'rgba(0,0,0,0)', border: 'none', padding: '0px 5px 0px 5px' }}
+                        title='Reset'
+                        onClick={resetChart}
+                    >
+                        &#8634;
+                    </button>
+                </div>
+            ) : null}
+
+            <Chart
+                ref={chartRef}
+                type={type}
+                data={data}
+                options={options}
+                onClick={(event) => {
+                    var ele = getElementAtEvent(chartRef.current, event);
+                    setProps({
+                        clickData: {
+                            datasetIndex: ele[0].datasetIndex,
+                            index: ele[0].index
+                        }
+                    });
+                }}
+            />
+        </div>
+    );
+};
 
 ChartJs.defaultProps = {
     data: {
@@ -87,7 +145,10 @@ ChartJs.defaultProps = {
     },
     options: {},
     clickData: {},
-    toolbox: true
+    toolbox: true,
+    linearGradientList: [],
+    linearGradientDirection: 'vertical',
+    useGradient: 'both'
 };
 
 ChartJs.propTypes = {
@@ -98,24 +159,39 @@ ChartJs.propTypes = {
     id: PropTypes.string,
 
     /**
-     * Chart.js chart type
+     * Chart.js chart type.
      */
     type: PropTypes.string,
 
     /**
-     * The data object that is passed into the Chart.js chart
+     * The data object that is passed into the Chart.js chart.
      */
     data: PropTypes.object,
 
     /**
-     * The options object that is passed into the Chart.js chart
+     * The options object that is passed into the Chart.js chart.
      */
     options: PropTypes.object,
 
     /**
-     * Toolbox with reset and download buttons for chart
+     * Toolbox with reset and download buttons for chart.
      */
     toolbox: PropTypes.bool,
+
+    /**
+     * List of colors for the Linear Gradient.
+     */
+    linearGradientList: PropTypes.array,
+
+    /**
+     * Set the direction of Linear Gradient. Either 'horizontal' or 'vertical'. Vertical is default.
+     */
+    linearGradientDirection: PropTypes.oneOf(['vertical', 'horizontal']),
+
+    /**
+     * Apply Linear Gradient on 'borderColor', 'backgroundColor' or on 'both'. Applies on both by default.
+     */
+    useGradient: PropTypes.oneOf(['borderColor', 'backgroundColor', 'both']),
 
     /**
      * clickData returns the datasetIndex and index of data point clicked.

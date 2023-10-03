@@ -168,6 +168,7 @@ wheels/
 .installed.cfg
 *.egg
 MANIFEST
+/dash-generate-components.exe
 
 # PyInstaller
 #  Usually these files are written by a python script from a template

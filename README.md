@@ -8,6 +8,20 @@ Dash Chartjs Component is a Dash component library that renders [ChartJs React c
 ```
 pip install dash-chartjs
 ```
+
+## Prop List
+    
+**id:** The ID used to identify this component in Dash callbacks.
+**type:** Chart.js chart type.
+**data:** The data object that is passed into the Chart.js chart.
+**options:** The options object that is passed into the Chart.js chart.
+**toolbox:** Toolbox with reset and download buttons for chart.
+**linearGradientList:** List of colors for the Linear Gradient.
+**linearGradientDirection:** Set the direction of Linear Gradient. Either 'horizontal' or 'vertical'. Vertical is default.
+**useGradient:** Apply Linear Gradient on 'borderColor', 'backgroundColor' or on 'both'. Applies on both by default.
+**clickData:** clickData returns the datasetIndex and index of data point clicked.
+**style:** Defines CSS styles which will override styles previously set.
+
 ## Basic Usage
 
 ```python

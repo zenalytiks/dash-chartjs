@@ -2,36 +2,7 @@
   "src/lib/components/ChartJs.react.js": {
     "description": "This component renders ChartJs React component inside Dash App.",
     "displayName": "ChartJs",
-    "methods": [
-      {
-        "name": "downloadChart",
-        "docblock": null,
-        "modifiers": [],
-        "params": [],
-        "returns": null
-      },
-      {
-        "name": "resetChart",
-        "docblock": null,
-        "modifiers": [],
-        "params": [],
-        "returns": null
-      },
-      {
-        "name": "handleOnMouseEnter",
-        "docblock": null,
-        "modifiers": [],
-        "params": [],
-        "returns": null
-      },
-      {
-        "name": "handleOnMouseLeave",
-        "docblock": null,
-        "modifiers": [],
-        "params": [],
-        "returns": null
-      }
-    ],
+    "methods": [],
     "props": {
       "id": {
         "type": {
@@ -45,14 +16,14 @@
           "name": "string"
         },
         "required": false,
-        "description": "Chart.js chart type"
+        "description": "Chart.js chart type."
       },
       "data": {
         "type": {
           "name": "object"
         },
         "required": false,
-        "description": "The data object that is passed into the Chart.js chart",
+        "description": "The data object that is passed into the Chart.js chart.",
         "defaultValue": {
           "value": "{\r\n    datasets: []\r\n}",
           "computed": false
@@ -63,7 +34,7 @@
           "name": "object"
         },
         "required": false,
-        "description": "The options object that is passed into the Chart.js chart",
+        "description": "The options object that is passed into the Chart.js chart.",
         "defaultValue": {
           "value": "{}",
           "computed": false
@@ -74,9 +45,66 @@
           "name": "bool"
         },
         "required": false,
-        "description": "Toolbox with reset and download buttons for chart",
+        "description": "Toolbox with reset and download buttons for chart.",
         "defaultValue": {
           "value": "true",
+          "computed": false
+        }
+      },
+      "linearGradientList": {
+        "type": {
+          "name": "array"
+        },
+        "required": false,
+        "description": "List of colors for the Linear Gradient.",
+        "defaultValue": {
+          "value": "[]",
+          "computed": false
+        }
+      },
+      "linearGradientDirection": {
+        "type": {
+          "name": "enum",
+          "value": [
+            {
+              "value": "'vertical'",
+              "computed": false
+            },
+            {
+              "value": "'horizontal'",
+              "computed": false
+            }
+          ]
+        },
+        "required": false,
+        "description": "Set the direction of Linear Gradient. Either 'horizontal' or 'vertical'. Vertical is default.",
+        "defaultValue": {
+          "value": "'vertical'",
+          "computed": false
+        }
+      },
+      "useGradient": {
+        "type": {
+          "name": "enum",
+          "value": [
+            {
+              "value": "'borderColor'",
+              "computed": false
+            },
+            {
+              "value": "'backgroundColor'",
+              "computed": false
+            },
+            {
+              "value": "'both'",
+              "computed": false
+            }
+          ]
+        },
+        "required": false,
+        "description": "Apply Linear Gradient on 'borderColor', 'backgroundColor' or on 'both'. Applies on both by default.",
+        "defaultValue": {
+          "value": "'both'",
           "computed": false
         }
       },

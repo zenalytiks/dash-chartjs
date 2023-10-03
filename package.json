@@ -1,6 +1,6 @@
 {
   "name": "dash_chartjs",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "A Dash Component library for ChartJs.",
   "repository": {
     "type": "git",
