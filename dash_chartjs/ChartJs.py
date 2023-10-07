@@ -16,6 +16,9 @@ Keyword arguments:
     clickData returns the datasetIndex and index of data point
     clicked.
 
+- customCanvasBackgroundColor (string; optional):
+    Set the Background color of Canvas.
+
 - data (dict; default {    datasets: []}):
     The data object that is passed into the Chart.js chart.
 
@@ -46,10 +49,10 @@ Keyword arguments:
     _namespace = 'dash_chartjs'
     _type = 'ChartJs'
     @_explicitize_args
-    def __init__(self, id=Component.UNDEFINED, type=Component.UNDEFINED, data=Component.UNDEFINED, options=Component.UNDEFINED, toolbox=Component.UNDEFINED, linearGradientList=Component.UNDEFINED, linearGradientDirection=Component.UNDEFINED, useGradient=Component.UNDEFINED, clickData=Component.UNDEFINED, style=Component.UNDEFINED, **kwargs):
-        self._prop_names = ['id', 'clickData', 'data', 'linearGradientDirection', 'linearGradientList', 'options', 'style', 'toolbox', 'type', 'useGradient']
+    def __init__(self, id=Component.UNDEFINED, type=Component.UNDEFINED, data=Component.UNDEFINED, options=Component.UNDEFINED, toolbox=Component.UNDEFINED, linearGradientList=Component.UNDEFINED, linearGradientDirection=Component.UNDEFINED, useGradient=Component.UNDEFINED, customCanvasBackgroundColor=Component.UNDEFINED, clickData=Component.UNDEFINED, style=Component.UNDEFINED, **kwargs):
+        self._prop_names = ['id', 'clickData', 'customCanvasBackgroundColor', 'data', 'linearGradientDirection', 'linearGradientList', 'options', 'style', 'toolbox', 'type', 'useGradient']
         self._valid_wildcard_attributes =            []
-        self.available_properties = ['id', 'clickData', 'data', 'linearGradientDirection', 'linearGradientList', 'options', 'style', 'toolbox', 'type', 'useGradient']
+        self.available_properties = ['id', 'clickData', 'customCanvasBackgroundColor', 'data', 'linearGradientDirection', 'linearGradientList', 'options', 'style', 'toolbox', 'type', 'useGradient']
         self.available_wildcard_properties =            []
         _explicit_args = kwargs.pop('_explicit_args')
         _locals = locals()

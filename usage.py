@@ -103,6 +103,9 @@ def display_output(n):
                   },
                   'mode':'xy'
                 }
+              },
+              'datalabels': {
+                'display':False
               }
             },
             'interaction': {
@@ -152,6 +155,9 @@ def display_output(n):
               'title': {
                 'display': True,
                 'text': 'Chart.js Radar Chart'
+              },
+              'datalabels': {
+                'display':False
               }
             }
         }
@@ -192,6 +198,9 @@ def display_output(n):
               'title': {
                 'display': True,
                 'text': 'Chart.js Pie Chart'
+              },
+              'datalabels': {
+                'display':False
               }
             }
         }
@@ -234,7 +243,10 @@ def display_output(n):
               'title': {
                 'display': True,
                 'text': 'Chart.js Combined Line/Bar Chart'
-              }
+              },
+              'datalabels': {
+                'display':False
+              },
             }
         }
 

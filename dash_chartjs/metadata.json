@@ -108,6 +108,13 @@
           "computed": false
         }
       },
+      "customCanvasBackgroundColor": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "Set the Background color of Canvas."
+      },
       "clickData": {
         "type": {
           "name": "object"

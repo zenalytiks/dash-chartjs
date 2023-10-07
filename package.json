@@ -26,6 +26,8 @@
   "dependencies": {
     "chart.js": "^3.9.1",
     "chartjs-adapter-moment": "^1.0.0",
+    "chartjs-plugin-annotation": "^2.2.1",
+    "chartjs-plugin-datalabels": "^2.2.0",
     "chartjs-plugin-zoom": "^1.2.1",
     "moment": "^2.29.4",
     "ramda": "^0.26.1",
@@ -51,7 +53,7 @@
     "react-docgen": "^4.1.1",
     "react-dom": "^18.2.0",
     "style-loader": "^0.23.1",
-    "styled-jsx": "^3.2.1",
+    "styled-jsx": "^5.1.2",
     "terser-webpack-plugin": "^2.3.0",
     "webpack": "4.36.1",
     "webpack-cli": "3.3.6",

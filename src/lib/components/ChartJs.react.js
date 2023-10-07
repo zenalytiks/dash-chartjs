@@ -6,8 +6,10 @@ import { Chart, getElementAtEvent } from 'react-chartjs-2';
 
 import 'chartjs-adapter-moment';
 import zoomPlugin from 'chartjs-plugin-zoom';
+import ChartDataLabels from 'chartjs-plugin-datalabels';
+import annotationPlugin from 'chartjs-plugin-annotation';
 
-ChartJS.register(...registerables,zoomPlugin);
+ChartJS.register(...registerables,zoomPlugin,ChartDataLabels,annotationPlugin);
 
 
 
@@ -15,7 +17,7 @@ ChartJS.register(...registerables,zoomPlugin);
  * This component renders ChartJs React component inside Dash App.
  */
 export default function ChartJs(props) {
-    const { id, setProps, style, type, data, options, toolbox, linearGradientList, linearGradientDirection, useGradient, clickData } = props;
+    const { id, setProps, style, type, data, options, toolbox, linearGradientList, linearGradientDirection, useGradient, customCanvasBackgroundColor, clickData } = props;
 
     const [visibility, setVisibility] = useState('hidden');
     const chartRef = useRef(null);
@@ -54,6 +56,22 @@ export default function ChartJs(props) {
         });
       
         return gradient;
+    }
+    
+    const plugins = [];
+    
+    if (customCanvasBackgroundColor) {
+      plugins.push({
+        id: 'customCanvasBackgroundColor',
+        beforeDraw: (chart, args, options) => {
+          const { ctx } = chart;
+          ctx.save();
+          ctx.globalCompositeOperation = 'destination-over';
+          ctx.fillStyle = options.color || customCanvasBackgroundColor;
+          ctx.fillRect(0, 0, chart.width, chart.height);
+          ctx.restore();
+        },
+      });
     }
     
     useEffect(() => {
@@ -125,6 +143,7 @@ export default function ChartJs(props) {
                 type={type}
                 data={data}
                 options={options}
+                plugins={plugins}
                 onClick={(event) => {
                     var ele = getElementAtEvent(chartRef.current, event);
                     setProps({
@@ -192,6 +211,11 @@ ChartJs.propTypes = {
      * Apply Linear Gradient on 'borderColor', 'backgroundColor' or on 'both'. Applies on both by default.
      */
     useGradient: PropTypes.oneOf(['borderColor', 'backgroundColor', 'both']),
+
+    /**
+     * Set the Background color of Canvas.
+     */
+    customCanvasBackgroundColor: PropTypes.string,
 
     /**
      * clickData returns the datasetIndex and index of data point clicked.
