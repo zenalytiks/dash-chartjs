@@ -24,6 +24,25 @@ pip install dash-chartjs
 **style (dict):** Defines CSS styles which will override styles previously set.<br><br>
 
 ## Additional Plugins Integrated
+### [chartjs-plugin-zoom](https://www.chartjs.org/chartjs-plugin-zoom/latest/)
+**Basic Configuration**<br>
+```python
+'options': {
+    'plugins': {
+      'zoom': {
+        'zoom': {
+          'wheel': {
+            'enabled': True,
+          },
+          'pinch': {
+            'enabled': True
+          },
+          'mode': 'xy',
+        }
+      }
+    }
+}
+```
 ### [chartjs-plugin-datalabels](https://chartjs-plugin-datalabels.netlify.app/)
 **Basic Configuration**<br>
 ```python
