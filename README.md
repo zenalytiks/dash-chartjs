@@ -27,43 +27,43 @@ pip install dash-chartjs
 ### [chartjs-plugin-datalabels](https://chartjs-plugin-datalabels.netlify.app/)
 **Basic Configuration**<br>
 ```python
-   'options': {
-     'plugins': {
-       # Change options for ALL labels of THIS CHART
-       'datalabels': {
-         'color': '#36A2EB'
-       }
-     }
-   },
-   'data': {
-     'datasets': [{
-       // Change options only for labels of THIS DATASET
-       'datalabels': {
-         'color': '#FFCE56'
-       }
-     }]
-   };
+'options': {
+  'plugins': {
+    # Change options for ALL labels of THIS CHART
+    'datalabels': {
+      'color': '#36A2EB'
+    }
+  }
+},
+'data': {
+  'datasets': [{
+    # Change options only for labels of THIS DATASET
+    'datalabels': {
+      'color': '#FFCE56'
+    }
+  }]
+}
 ```
 ### [chartjs-plugin-annotation](https://www.chartjs.org/chartjs-plugin-annotation/latest/)
 **Basic Configuration**<br>
 ```python
-  'options': {
-    'plugins': {
-      'annotation': {
-        'annotations': {
-          'box1': {
-            #Indicates the type of annotation
-            'type': 'box',
-            'xMin': 1,
-            'xMax': 2,
-            'yMin': 50,
-            'yMax': 70,
-            'backgroundColor': 'rgba(255, 99, 132, 0.25)'
-          }
+'options': {
+  'plugins': {
+    'annotation': {
+      'annotations': {
+        'box1': {
+          # Indicates the type of annotation
+          'type': 'box',
+          'xMin': 1,
+          'xMax': 2,
+          'yMin': 50,
+          'yMax': 70,
+          'backgroundColor': 'rgba(255, 99, 132, 0.25)'
         }
       }
     }
   }
+}
 ```
 
 ## Basic Usage
