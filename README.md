@@ -11,17 +11,60 @@ pip install dash-chartjs
 
 ## Prop List
     
-**id:** The ID used to identify this component in Dash callbacks.<br><br>
-**type:** Chart.js chart type.<br><br>
-**data:** The data object that is passed into the Chart.js chart.<br><br>
-**options:** The options object that is passed into the Chart.js chart.<br><br>
-**toolbox:** Toolbox with reset and download buttons for chart.<br><br>
-**linearGradientList:** List of colors for the Linear Gradient.<br><br>
-**linearGradientDirection:** Set the direction of Linear Gradient. Either 'horizontal' or 'vertical'. Vertical is default.<br><br>
-**useGradient:** Apply Linear Gradient on 'borderColor', 'backgroundColor' or on 'both'. Applies on both by default.<br><br>
-**customCanvasBackgroundColor:** Set the Background color of Canvas.<br><br>
-**clickData:** clickData returns the datasetIndex and index of data point clicked.<br><br>
-**style:** Defines CSS styles which will override styles previously set.<br><br>
+**id (str):** The ID used to identify this component in Dash callbacks.<br><br>
+**type (str):** Chart.js chart type.<br><br>
+**data (dict):** The data object that is passed into the Chart.js chart.<br><br>
+**options (dict):** The options object that is passed into the Chart.js chart.<br><br>
+**toolbox (boolean):** Toolbox with reset and download buttons for chart.<br><br>
+**linearGradientList (list):** List of colors for the Linear Gradient.<br><br>
+**linearGradientDirection (str):** Set the direction of Linear Gradient. Either 'horizontal' or 'vertical'. Vertical is default.<br><br>
+**useGradient (str):** Apply Linear Gradient on 'borderColor', 'backgroundColor' or on 'both'. Applies on both by default.<br><br>
+**customCanvasBackgroundColor (str):** Set the Background color of Canvas.<br><br>
+**clickData (dict):** clickData returns the datasetIndex and index of data point clicked.<br><br>
+**style (dict):** Defines CSS styles which will override styles previously set.<br><br>
+
+## Additional Plugins Integrated
+### [chartjs-plugin-datalabels](https://chartjs-plugin-datalabels.netlify.app/)
+**Basic Configuration**<br>
+```python
+   'options': {
+     'plugins': {
+       # Change options for ALL labels of THIS CHART
+       'datalabels': {
+         'color': '#36A2EB'
+       }
+     }
+   },
+   'data': {
+     'datasets': [{
+       // Change options only for labels of THIS DATASET
+       'datalabels': {
+         'color': '#FFCE56'
+       }
+     }]
+   };
+```
+### [chartjs-plugin-annotation](https://www.chartjs.org/chartjs-plugin-annotation/latest/)
+**Basic Configuration**<br>
+```python
+  'options': {
+    'plugins': {
+      'annotation': {
+        'annotations': {
+          'box1': {
+            #Indicates the type of annotation
+            'type': 'box',
+            'xMin': 1,
+            'xMax': 2,
+            'yMin': 50,
+            'yMax': 70,
+            'backgroundColor': 'rgba(255, 99, 132, 0.25)'
+          }
+        }
+      }
+    }
+  }
+```
 
 ## Basic Usage
 
