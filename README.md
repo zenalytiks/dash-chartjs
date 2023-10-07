@@ -11,16 +11,17 @@ pip install dash-chartjs
 
 ## Prop List
     
-**id:** The ID used to identify this component in Dash callbacks.<br>
-**type:** Chart.js chart type.<br>
-**data:** The data object that is passed into the Chart.js chart.<br>
-**options:** The options object that is passed into the Chart.js chart.<br>
-**toolbox:** Toolbox with reset and download buttons for chart.<br>
-**linearGradientList:** List of colors for the Linear Gradient.<br>
-**linearGradientDirection:** Set the direction of Linear Gradient. Either 'horizontal' or 'vertical'. Vertical is default.<br>
-**useGradient:** Apply Linear Gradient on 'borderColor', 'backgroundColor' or on 'both'. Applies on both by default.<br>
-**clickData:** clickData returns the datasetIndex and index of data point clicked.<br>
-**style:** Defines CSS styles which will override styles previously set.<br>
+**id:** The ID used to identify this component in Dash callbacks.<br><br>
+**type:** Chart.js chart type.<br><br>
+**data:** The data object that is passed into the Chart.js chart.<br><br>
+**options:** The options object that is passed into the Chart.js chart.<br><br>
+**toolbox:** Toolbox with reset and download buttons for chart.<br><br>
+**linearGradientList:** List of colors for the Linear Gradient.<br><br>
+**linearGradientDirection:** Set the direction of Linear Gradient. Either 'horizontal' or 'vertical'. Vertical is default.<br><br>
+**useGradient:** Apply Linear Gradient on 'borderColor', 'backgroundColor' or on 'both'. Applies on both by default.<br><br>
+**customCanvasBackgroundColor:** Set the Background color of Canvas.<br><br>
+**clickData:** clickData returns the datasetIndex and index of data point clicked.<br><br>
+**style:** Defines CSS styles which will override styles previously set.<br><br>
 
 ## Basic Usage
 
