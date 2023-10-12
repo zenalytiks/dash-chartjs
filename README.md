@@ -63,6 +63,7 @@ pip install dash-chartjs
   }]
 }
 ```
+**Example**
 ![datalables](https://github.com/zenalytiks/dash-chartjs/assets/31138706/f338eda9-4e0c-4128-ac72-972bbd488c6d)
 
 ### [chartjs-plugin-annotation](https://www.chartjs.org/chartjs-plugin-annotation/latest/)
@@ -86,6 +87,7 @@ pip install dash-chartjs
   }
 }
 ```
+**Example**
 ![annotations](https://github.com/zenalytiks/dash-chartjs/assets/31138706/1dec90df-69f9-4098-9b01-3f06d46248f1)
 
 ## Basic Usage
