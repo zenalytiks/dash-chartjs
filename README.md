@@ -1,5 +1,7 @@
 # Dash Chartjs Component
 
+[![Downloads](https://static.pepy.tech/badge/dash-chartjs)](https://pepy.tech/project/dash-chartjs)
+
 Chart.js is one the most popular javascript charting library. 
 Dash Chartjs Component is a Dash component library that renders [ChartJs React component](https://react-chartjs-2.js.org/) inside Dash App.
 
