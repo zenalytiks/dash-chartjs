@@ -16,10 +16,8 @@ pip install dash-chartjs
 **data (dict):** The data object that is passed into the Chart.js chart.<br><br>
 **options (dict):** The options object that is passed into the Chart.js chart.<br><br>
 **toolbox (boolean):** Toolbox with reset and download buttons for chart.<br><br>
-**linearGradientList (list):** List of colors for the Linear Gradient.<br><br>
-**linearGradientDirection (str):** Set the direction of Linear Gradient. Either 'horizontal' or 'vertical'. Vertical is default.<br><br>
-**useGradient (str):** Apply Linear Gradient on 'borderColor', 'backgroundColor' or on 'both'. Applies on both by default.<br><br>
-**customCanvasBackgroundColor (str):** Set the Background color of Canvas.<br><br>
+**customJSFunctions (dict):** Write custom JS functions in dict format.<br><br>
+**customPlugins (dict):** Write Plugins in dict format.<br><br>
 **clickData (dict):** clickData returns the datasetIndex and index of data point clicked.<br><br>
 **style (dict):** Defines CSS styles which will override styles previously set.<br><br>
 

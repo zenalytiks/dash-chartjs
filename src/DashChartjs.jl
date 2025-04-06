@@ -3,7 +3,7 @@ module DashChartjs
 using Dash
 
 const resources_path = realpath(joinpath( @__DIR__, "..", "deps"))
-const version = "0.0.8"
+const version = "0.0.9"
 
 include("jl/''_chartjs.jl")
 

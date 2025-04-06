@@ -10,10 +10,9 @@ This component renders ChartJs React component inside Dash App.
 }
 
 \usage{
-''ChartJs(id=NULL, clickData=NULL, customCanvasBackgroundColor=NULL,
-data=NULL, linearGradientDirection=NULL,
-linearGradientList=NULL, options=NULL, style=NULL,
-toolbox=NULL, type=NULL, useGradient=NULL)
+''ChartJs(id=NULL, clickData=NULL, customJSFunctions=NULL,
+customPlugins=NULL, data=NULL, options=NULL, style=NULL,
+toolbox=NULL, type=NULL)
 }
 
 \arguments{
@@ -21,13 +20,11 @@ toolbox=NULL, type=NULL, useGradient=NULL)
 
 \item{clickData}{Named list. clickData returns the datasetIndex and index of data point clicked.}
 
-\item{customCanvasBackgroundColor}{Character. Set the Background color of Canvas.}
+\item{customJSFunctions}{Named list. Write custom JS functions in dict format.}
+
+\item{customPlugins}{Named list. Write Plugins in dict format.}
 
 \item{data}{Named list. The data object that is passed into the Chart.js chart.}
-
-\item{linearGradientDirection}{A value equal to: 'vertical', 'horizontal'. Set the direction of Linear Gradient. Either 'horizontal' or 'vertical'. Vertical is default.}
-
-\item{linearGradientList}{Unnamed list. List of colors for the Linear Gradient.}
 
 \item{options}{Named list. The options object that is passed into the Chart.js chart.}
 
@@ -36,8 +33,6 @@ toolbox=NULL, type=NULL, useGradient=NULL)
 \item{toolbox}{Logical. Toolbox with reset and download buttons for chart.}
 
 \item{type}{Character. Chart.js chart type.}
-
-\item{useGradient}{A value equal to: 'bordercolor', 'backgroundcolor', 'both'. Apply Linear Gradient on 'borderColor', 'backgroundColor' or on 'both'. Applies on both by default.}
 }
 
 \value{named list of JSON elements corresponding to React.js properties and their values}

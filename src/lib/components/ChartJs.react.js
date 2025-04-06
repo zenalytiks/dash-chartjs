@@ -1,4 +1,4 @@
-import React, {useRef, useState, useEffect} from 'react';
+import React, {useMemo, useRef, useState, useEffect} from 'react';
 import PropTypes from 'prop-types';
 
 import { Chart as ChartJS, registerables } from 'chart.js';
@@ -17,9 +17,11 @@ ChartJS.register(...registerables,zoomPlugin,ChartDataLabels,annotationPlugin);
  * This component renders ChartJs React component inside Dash App.
  */
 export default function ChartJs(props) {
-    const { id, setProps, style, type, data, options, toolbox, linearGradientList, linearGradientDirection, useGradient, customCanvasBackgroundColor, clickData } = props;
+    const { id, setProps, style, type, data, options, toolbox, customPlugins, clickData, customJSFunctions } = props;
 
     const [visibility, setVisibility] = useState('hidden');
+    const [finalOptions, setFinalOptions] = useState(options);
+    const [finalData, setFinalData] = useState(data);
     const chartRef = useRef(null);
 
     const downloadChart = () => {
@@ -40,67 +42,69 @@ export default function ChartJs(props) {
     const handleOnMouseLeave = () => {
         setVisibility('hidden');
     };
-    const createGradient = (ctx, area, colors) => {
-        const isVertical = linearGradientDirection === "vertical";
 
-        const gradient = isVertical
-          ? ctx.createLinearGradient(0, area.bottom, 0, area.top)
-          : ctx.createLinearGradient(area.left, 0, area.right, 0);   
+    const injectJSFunctions = (obj, fnMap) => {
+        if (!fnMap) return obj;
+    
+        const deepInject = (target) => {
+            if (typeof target === 'object' && target !== null) {
+                for (let key in target) {
+                    if (typeof target[key] === 'string' && fnMap.hasOwnProperty(target[key])) {
+                        try {
+                            target[key] = eval(`(${fnMap[target[key]]})`);
+                        } catch (e) {
+                            console.warn(`Failed to evaluate function for key "${key}"`, e);
+                        }
+                    } else if (typeof target[key] === 'object') {
+                        deepInject(target[key]);
+                    }
+                }
+            }
+        };
+    
+        const newObj = JSON.parse(JSON.stringify(obj));
+        deepInject(newObj);
+        return newObj;
+    };
     
 
-
-        const step = 1 / (colors.length - 1);
-      
-        colors.forEach((color, index) => {
-          gradient.addColorStop(index * step, color);
-        });
-      
-        return gradient;
-    }
-    
-    const plugins = [];
-    
-    if (customCanvasBackgroundColor) {
-      plugins.push({
-        id: 'customCanvasBackgroundColor',
-        beforeDraw: (chart, args, options) => {
-          const { ctx } = chart;
-          ctx.save();
-          ctx.globalCompositeOperation = 'destination-over';
-          ctx.fillStyle = options.color || customCanvasBackgroundColor;
-          ctx.fillRect(0, 0, chart.width, chart.height);
-          ctx.restore();
-        },
-      });
-    }
-    
     useEffect(() => {
-        const chart = chartRef.current;
-    
-        if (chart && linearGradientList && linearGradientList.length > 0) {
+        const processedOptions = injectJSFunctions(options, customJSFunctions);
+        setFinalOptions(processedOptions);
+    }, [options, customJSFunctions]);
 
-          const chartData = {
-            ...data,
-            datasets: data.datasets.map((dataset) => {
-              const applyBackgroundColor = useGradient === 'backgroundColor' || useGradient === 'both';
-              const applyBorderColor = useGradient === 'borderColor' || useGradient === 'both';
+    useEffect(() => {
+        const processedData = injectJSFunctions(data, customJSFunctions);
+        setFinalData(processedData);
+
+    }, [data,customJSFunctions])
+
+
+    const parsePlugins = (pluginMap) => {
+        const plugins = [];
     
-              return {
-                ...dataset,
-                backgroundColor: applyBackgroundColor
-                  ? createGradient(chart.ctx, chart.chartArea, linearGradientList)
-                  : dataset.backgroundColor,
-                borderColor: applyBorderColor
-                  ? createGradient(chart.ctx, chart.chartArea, linearGradientList)
-                  : dataset.borderColor,
-              };
-            }),
-          };
-    
-          chart.data = chartData;
-          chart.update();
+        for (const key in pluginMap) {
+            try {
+                const pluginObj = eval(`(${pluginMap[key]})`);
+                plugins.push(pluginObj);
+            } catch (e) {
+                console.warn(`Failed to parse plugin "${key}"`, e);
+            }
         }
-    }, [data, linearGradientList, linearGradientDirection, useGradient]);
+    
+        return plugins;
+    };
+    
+
+    const plugins = useMemo(() => {
+        const pluginList = [];
+    
+        if (customPlugins) {
+            pluginList.push(...parsePlugins(customPlugins));
+        }
+    
+        return pluginList;
+    }, [customPlugins]);    
 
     
     return (
@@ -120,7 +124,7 @@ export default function ChartJs(props) {
                     }}
                 >
                     <button
-                        style={{ background: 'rgba(0,0,0,0)', border: 'none', padding: '0px 5px 0px 5px' }}
+                        style={{ background: 'rgba(0,0,0,0)', border: 'none', fontSize: '1.2rem' }}
                         title='Download'
                         value='print'
                         onClick={downloadChart}
@@ -129,7 +133,7 @@ export default function ChartJs(props) {
                     </button>
 
                     <button
-                        style={{ background: 'rgba(0,0,0,0)', border: 'none', padding: '0px 5px 0px 5px' }}
+                        style={{ background: 'rgba(0,0,0,0)', border: 'none', fontSize: '1.2rem' }}
                         title='Reset'
                         onClick={resetChart}
                     >
@@ -141,8 +145,8 @@ export default function ChartJs(props) {
             <Chart
                 ref={chartRef}
                 type={type}
-                data={data}
-                options={options}
+                data={finalData}
+                options={finalOptions}
                 plugins={plugins}
                 onClick={(event) => {
                     var ele = getElementAtEvent(chartRef.current, event);
@@ -165,9 +169,8 @@ ChartJs.defaultProps = {
     options: {},
     clickData: {},
     toolbox: true,
-    linearGradientList: [],
-    linearGradientDirection: 'vertical',
-    useGradient: 'both'
+    customJSFunctions: {},
+    customPlugins: {}
 };
 
 ChartJs.propTypes = {
@@ -198,29 +201,19 @@ ChartJs.propTypes = {
     toolbox: PropTypes.bool,
 
     /**
-     * List of colors for the Linear Gradient.
-     */
-    linearGradientList: PropTypes.array,
-
-    /**
-     * Set the direction of Linear Gradient. Either 'horizontal' or 'vertical'. Vertical is default.
-     */
-    linearGradientDirection: PropTypes.oneOf(['vertical', 'horizontal']),
-
-    /**
-     * Apply Linear Gradient on 'borderColor', 'backgroundColor' or on 'both'. Applies on both by default.
-     */
-    useGradient: PropTypes.oneOf(['borderColor', 'backgroundColor', 'both']),
-
-    /**
-     * Set the Background color of Canvas.
-     */
-    customCanvasBackgroundColor: PropTypes.string,
-
-    /**
      * clickData returns the datasetIndex and index of data point clicked.
      */
     clickData: PropTypes.object,
+
+    /**
+     * Write custom JS functions in dict format.
+     */
+    customJSFunctions: PropTypes.object,
+
+    /**
+     * Write Plugins in dict format.
+     */
+    customPlugins: PropTypes.object,
 
     /**
      * Defines CSS styles which will override styles previously set.

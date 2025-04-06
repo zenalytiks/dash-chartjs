@@ -1,6 +1,6 @@
 {
   "name": "dash_chartjs",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "A Dash Component library for ChartJs.",
   "repository": {
     "type": "git",
@@ -25,7 +25,7 @@
   "license": "MIT",
   "dependencies": {
     "chart.js": "^3.9.1",
-    "chartjs-adapter-moment": "^1.0.0",
+    "chartjs-adapter-moment": "^1.0.1",
     "chartjs-plugin-annotation": "^2.2.1",
     "chartjs-plugin-datalabels": "^2.2.0",
     "chartjs-plugin-zoom": "^1.2.1",

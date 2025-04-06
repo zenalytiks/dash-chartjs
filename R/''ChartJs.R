@@ -1,9 +1,9 @@
 # AUTO GENERATED FILE - DO NOT EDIT
 
 #' @export
-''ChartJs <- function(id=NULL, clickData=NULL, customCanvasBackgroundColor=NULL, data=NULL, linearGradientDirection=NULL, linearGradientList=NULL, options=NULL, style=NULL, toolbox=NULL, type=NULL, useGradient=NULL) {
+''ChartJs <- function(id=NULL, clickData=NULL, customJSFunctions=NULL, customPlugins=NULL, data=NULL, options=NULL, style=NULL, toolbox=NULL, type=NULL) {
     
-    props <- list(id=id, clickData=clickData, customCanvasBackgroundColor=customCanvasBackgroundColor, data=data, linearGradientDirection=linearGradientDirection, linearGradientList=linearGradientList, options=options, style=style, toolbox=toolbox, type=type, useGradient=useGradient)
+    props <- list(id=id, clickData=clickData, customJSFunctions=customJSFunctions, customPlugins=customPlugins, data=data, options=options, style=style, toolbox=toolbox, type=type)
     if (length(props) > 0) {
         props <- props[!vapply(props, is.null, logical(1))]
     }
@@ -11,7 +11,7 @@
         props = props,
         type = 'ChartJs',
         namespace = 'dash_chartjs',
-        propNames = c('id', 'clickData', 'customCanvasBackgroundColor', 'data', 'linearGradientDirection', 'linearGradientList', 'options', 'style', 'toolbox', 'type', 'useGradient'),
+        propNames = c('id', 'clickData', 'customJSFunctions', 'customPlugins', 'data', 'options', 'style', 'toolbox', 'type'),
         package = 'dashChartjs'
         )
 
