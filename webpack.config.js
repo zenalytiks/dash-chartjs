@@ -59,6 +59,19 @@ module.exports = (env, argv) => {
         module: {
             rules: [
                 {
+                    test: /\.m?js$/,
+                    include: [
+                        path.resolve(__dirname, 'node_modules/chart.js'),
+                        path.resolve(__dirname, 'node_modules/chartjs-plugin-zoom'),
+                    ],
+                    use: {
+                        loader: 'babel-loader',
+                        options: {
+                            presets: ['@babel/preset-env']
+                        }
+                    }
+                },
+                {
                     test: /\.jsx?$/,
                     exclude: /node_modules/,
                     use: {

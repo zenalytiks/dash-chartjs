@@ -159,6 +159,10 @@ def display_output(n):
                   'usePointStyle': True
               },
               'zoom':{
+                'pan': {
+                  'enabled': True,
+                  'mode': 'xy',
+                },
                 'zoom':{
                   'wheel':{
                     'enabled': True
@@ -308,6 +312,10 @@ def display_output(n):
                   }
               },
               'zoom':{
+                'pan': {
+                  'enabled': True,
+                  'mode': 'xy',
+                },
                 'zoom':{
                   'wheel':{
                     'enabled': True
