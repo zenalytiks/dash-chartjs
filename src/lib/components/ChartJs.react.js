@@ -9,7 +9,17 @@ import zoomPlugin from 'chartjs-plugin-zoom';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 import annotationPlugin from 'chartjs-plugin-annotation';
 
-ChartJS.register(...registerables,zoomPlugin,ChartDataLabels,annotationPlugin);
+import { ChoroplethController, GeoFeature, ColorScale, ProjectionScale } from 'chartjs-chart-geo';
+
+ChartJS.register(
+    ...registerables,
+    zoomPlugin,
+    ChartDataLabels,
+    annotationPlugin,
+    ChoroplethController,
+    GeoFeature,
+    ColorScale,
+    ProjectionScale);
 
 
 

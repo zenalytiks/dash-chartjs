@@ -1,11 +1,20 @@
 from dash_chartjs import ChartJs
-import dash
-from dash import html, Input, Output
+from dash import Dash, html, Input, Output
 import dash_bootstrap_components as dbc
 import random
+import json
 
-dash._dash_renderer._set_react_version("18.2.0")
-app = dash.Dash(__name__,external_stylesheets=[dbc.themes.BOOTSTRAP],meta_tags=[{"name": "viewport", "content": "width=device-width, initial-scale=1"}])
+with open('./assets/chartjs-chart-geo-test/nation.geojson', 'r') as f:
+    geojson_nation_data = json.load(f)
+
+nation = geojson_nation_data
+
+with open('./assets/chartjs-chart-geo-test/states.geojson', 'r') as f:
+    geojson_states_data = json.load(f)
+
+states = geojson_states_data
+
+app = Dash(__name__,external_stylesheets=[dbc.themes.BOOTSTRAP],meta_tags=[{"name": "viewport", "content": "width=device-width, initial-scale=1"}])
 
 
 
@@ -93,6 +102,11 @@ app.layout = dbc.Container([
                  )
                   
               ],md=6
+          ),
+          dbc.Col(
+              [
+                  ChartJs(id='chart-5',type='choropleth')
+              ]
           )
       ]
     )
@@ -104,7 +118,8 @@ app.layout = dbc.Container([
     [Output('chart-1','data'),Output('chart-1','options'),
     Output('chart-2','data'),Output('chart-2','options'),
     Output('chart-3','data'),Output('chart-3','options'),
-    Output('chart-4','data'),Output('chart-4','options')
+    Output('chart-4','data'),Output('chart-4','options'),
+    Output('chart-5','data'),Output('chart-5','options')
     ],
     Input('gen-rand','n_clicks')
 )
@@ -335,9 +350,44 @@ def display_output(n):
 
         
 
-        return [data1, options1, data2, options2, data3, options3, data4, options4]
+        data5={
+            'labels': [d['properties']['name'] for d in states],
+            'datasets': [{
+                'label':'States',
+                'outline': nation,
+                'data': [{'feature': d, 'value': random.random() * 10} for d in states]
+            }]
+        }
+        options5={
+          'plugins': {
+            'legend': {
+              'display': False
+            },
+            'datalabels': {
+              'display':False
+            }
+          },
+          'scales': {
+            'projection': {
+              'axis': 'x',
+              'projection': 'albersUsa'  
+            },
+            'color': {
+              'axis': 'x',
+              'quantize': 5,
+              'legend': {
+                'position': 'bottom-right',
+                'align': 'bottom'
+              },
+            }
+          },
+        }
+
+        
+
+        return [data1, options1, data2, options2, data3, options3, data4, options4, data5, options5]
     
 
 
 if __name__ == '__main__':
-    app.run_server(debug=True)
+    app.run(debug=True)

@@ -23,72 +23,6 @@ pip install dash-chartjs
 **clickData (dict):** clickData returns the datasetIndex and index of data point clicked.<br><br>
 **style (dict):** Defines CSS styles which will override styles previously set.<br><br>
 
-## Additional Plugins Integrated
-### [chartjs-plugin-zoom](https://www.chartjs.org/chartjs-plugin-zoom/latest/)
-**Basic Configuration**<br>
-```python
-'options': {
-    'plugins': {
-      'zoom': {
-        'zoom': {
-          'wheel': {
-            'enabled': True,
-          },
-          'pinch': {
-            'enabled': True
-          },
-          'mode': 'xy',
-        }
-      }
-    }
-}
-```
-### [chartjs-plugin-datalabels](https://chartjs-plugin-datalabels.netlify.app/)
-**Basic Configuration**<br>
-```python
-'options': {
-  'plugins': {
-    # Change options for ALL labels of THIS CHART
-    'datalabels': {
-      'color': '#36A2EB'
-    }
-  }
-},
-'data': {
-  'datasets': [{
-    # Change options only for labels of THIS DATASET
-    'datalabels': {
-      'color': '#FFCE56'
-    }
-  }]
-}
-```
-**Example**
-![datalables](https://github.com/zenalytiks/dash-chartjs/assets/31138706/f338eda9-4e0c-4128-ac72-972bbd488c6d)
-
-### [chartjs-plugin-annotation](https://www.chartjs.org/chartjs-plugin-annotation/latest/)
-**Basic Configuration**<br>
-```python
-'options': {
-  'plugins': {
-    'annotation': {
-      'annotations': {
-        'box1': {
-          # Indicates the type of annotation
-          'type': 'box',
-          'xMin': 1,
-          'xMax': 2,
-          'yMin': 50,
-          'yMax': 70,
-          'backgroundColor': 'rgba(255, 99, 132, 0.25)'
-        }
-      }
-    }
-  }
-}
-```
-**Example**
-![annotations](https://github.com/zenalytiks/dash-chartjs/assets/31138706/1dec90df-69f9-4098-9b01-3f06d46248f1)
 
 ## Basic Usage
 
@@ -147,7 +81,27 @@ if __name__ == '__main__':
 
 ## Demo
 
-
 https://user-images.githubusercontent.com/31138706/192035295-0a10eb80-0881-443b-8ea8-7dfd98eb77f3.mp4
+
+## Additional Plugins Integrated
+### [chartjs-plugin-zoom](https://www.chartjs.org/chartjs-plugin-zoom/latest/)
+
+### [chartjs-plugin-datalabels](https://chartjs-plugin-datalabels.netlify.app/)
+
+**Example**
+![datalables](https://github.com/zenalytiks/dash-chartjs/assets/31138706/f338eda9-4e0c-4128-ac72-972bbd488c6d)
+
+### [chartjs-plugin-annotation](https://www.chartjs.org/chartjs-plugin-annotation/latest/)
+
+**Example**
+![annotations](https://github.com/zenalytiks/dash-chartjs/assets/31138706/1dec90df-69f9-4098-9b01-3f06d46248f1)
+
+### [chartjs-chart-geo](https://www.sgratzl.com/chartjs-chart-geo/)
+
+**Example**
+![Image](https://github.com/user-attachments/assets/3c190e59-2dab-470c-b20b-0c435f7c9ed1)
+
+
+
 
 
