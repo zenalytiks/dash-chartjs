@@ -14,12 +14,13 @@ Keyword arguments:
 - `customPlugins` (Dict; optional): Write Plugins in dict format.
 - `data` (Dict; optional): The data object that is passed into the Chart.js chart.
 - `options` (Dict; optional): The options object that is passed into the Chart.js chart.
+- `redraw` (Bool; optional): Teardown and redraw chart on every update.
 - `style` (Dict; optional): Defines CSS styles which will override styles previously set.
 - `toolbox` (Bool; optional): Toolbox with reset and download buttons for chart.
 - `type` (String; optional): Chart.js chart type.
 """
 function ''_chartjs(; kwargs...)
-        available_props = Symbol[:id, :clickData, :customJSFunctions, :customPlugins, :data, :options, :style, :toolbox, :type]
+        available_props = Symbol[:id, :clickData, :customJSFunctions, :customPlugins, :data, :options, :redraw, :style, :toolbox, :type]
         wild_props = Symbol[]
         return Component("''_chartjs", "ChartJs", "dash_chartjs", available_props, wild_props; kwargs...)
 end

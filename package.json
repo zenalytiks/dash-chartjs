@@ -1,6 +1,6 @@
 {
   "name": "dash_chartjs",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "A Dash Component library for ChartJs.",
   "repository": {
     "type": "git",
@@ -24,9 +24,15 @@
   "author": "Waleed Malik <waleed@zenalytiks.com>",
   "license": "MIT",
   "dependencies": {
+    "@sgratzl/chartjs-chart-boxplot": "^4.4.4",
     "chart.js": "^4.4.8",
     "chartjs-adapter-moment": "^1.0.1",
     "chartjs-chart-geo": "^4.3.4",
+    "chartjs-chart-graph": "^4.3.4",
+    "chartjs-chart-matrix": "^3.0.0",
+    "chartjs-chart-pcp": "^4.3.4",
+    "chartjs-chart-sankey": "^0.14.0",
+    "chartjs-chart-treemap": "^3.1.0",
     "chartjs-plugin-annotation": "^3.1.0",
     "chartjs-plugin-datalabels": "^2.2.0",
     "chartjs-plugin-zoom": "^2.2.0",

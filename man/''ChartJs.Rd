@@ -11,8 +11,8 @@ This component renders ChartJs React component inside Dash App.
 
 \usage{
 ''ChartJs(id=NULL, clickData=NULL, customJSFunctions=NULL,
-customPlugins=NULL, data=NULL, options=NULL, style=NULL,
-toolbox=NULL, type=NULL)
+customPlugins=NULL, data=NULL, options=NULL, redraw=NULL,
+style=NULL, toolbox=NULL, type=NULL)
 }
 
 \arguments{
@@ -27,6 +27,8 @@ toolbox=NULL, type=NULL)
 \item{data}{Named list. The data object that is passed into the Chart.js chart.}
 
 \item{options}{Named list. The options object that is passed into the Chart.js chart.}
+
+\item{redraw}{Logical. Teardown and redraw chart on every update.}
 
 \item{style}{Named list. Defines CSS styles which will override styles previously set.}
 

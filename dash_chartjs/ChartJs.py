@@ -28,6 +28,9 @@ Keyword arguments:
 - options (dict; optional):
     The options object that is passed into the Chart.js chart.
 
+- redraw (boolean; default False):
+    Teardown and redraw chart on every update.
+
 - style (dict; optional):
     Defines CSS styles which will override styles previously set.
 
@@ -41,10 +44,10 @@ Keyword arguments:
     _namespace = 'dash_chartjs'
     _type = 'ChartJs'
     @_explicitize_args
-    def __init__(self, id=Component.UNDEFINED, type=Component.UNDEFINED, data=Component.UNDEFINED, options=Component.UNDEFINED, toolbox=Component.UNDEFINED, clickData=Component.UNDEFINED, customJSFunctions=Component.UNDEFINED, customPlugins=Component.UNDEFINED, style=Component.UNDEFINED, **kwargs):
-        self._prop_names = ['id', 'clickData', 'customJSFunctions', 'customPlugins', 'data', 'options', 'style', 'toolbox', 'type']
+    def __init__(self, id=Component.UNDEFINED, type=Component.UNDEFINED, data=Component.UNDEFINED, options=Component.UNDEFINED, redraw=Component.UNDEFINED, toolbox=Component.UNDEFINED, clickData=Component.UNDEFINED, customJSFunctions=Component.UNDEFINED, customPlugins=Component.UNDEFINED, style=Component.UNDEFINED, **kwargs):
+        self._prop_names = ['id', 'clickData', 'customJSFunctions', 'customPlugins', 'data', 'options', 'redraw', 'style', 'toolbox', 'type']
         self._valid_wildcard_attributes =            []
-        self.available_properties = ['id', 'clickData', 'customJSFunctions', 'customPlugins', 'data', 'options', 'style', 'toolbox', 'type']
+        self.available_properties = ['id', 'clickData', 'customJSFunctions', 'customPlugins', 'data', 'options', 'redraw', 'style', 'toolbox', 'type']
         self.available_wildcard_properties =            []
         _explicit_args = kwargs.pop('_explicit_args')
         _locals = locals()

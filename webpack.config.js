@@ -63,6 +63,8 @@ module.exports = (env, argv) => {
                     include: [
                         path.resolve(__dirname, 'node_modules/chart.js'),
                         path.resolve(__dirname, 'node_modules/chartjs-plugin-zoom'),
+                        path.resolve(__dirname, 'node_modules/chartjs-chart-sankey'),
+                        path.resolve(__dirname, 'node_modules/chartjs-chart-treemap'),
                     ],
                     use: {
                         loader: 'babel-loader',

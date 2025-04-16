@@ -1,7 +1,7 @@
 import React, {useMemo, useRef, useState, useEffect} from 'react';
 import PropTypes from 'prop-types';
 
-import { Chart as ChartJS, registerables } from 'chart.js';
+import { Chart as ChartJS, LinearScale, CategoryScale, PointElement, registerables } from 'chart.js';
 import { Chart, getElementAtEvent } from 'react-chartjs-2';
 
 import 'chartjs-adapter-moment';
@@ -9,7 +9,13 @@ import zoomPlugin from 'chartjs-plugin-zoom';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 import annotationPlugin from 'chartjs-plugin-annotation';
 
-import { ChoroplethController, GeoFeature, ColorScale, ProjectionScale } from 'chartjs-chart-geo';
+import { ChoroplethController, BubbleMapController, GeoFeature, ColorScale, ProjectionScale, SizeScale } from 'chartjs-chart-geo';
+import { MatrixController, MatrixElement } from 'chartjs-chart-matrix';
+import { TreemapController, TreemapElement } from 'chartjs-chart-treemap';
+import { BoxPlotController, BoxAndWiskers, ViolinController, Violin } from '@sgratzl/chartjs-chart-boxplot';
+import { ForceDirectedGraphController, DendrogramController, TreeController, EdgeLine } from 'chartjs-chart-graph';
+import { SankeyController, Flow } from 'chartjs-chart-sankey';
+import { ParallelCoordinatesController, LogarithmicParallelCoordinatesController, LinearAxis, LineSegment, PCPScale } from 'chartjs-chart-pcp';
 
 ChartJS.register(
     ...registerables,
@@ -17,9 +23,34 @@ ChartJS.register(
     ChartDataLabels,
     annotationPlugin,
     ChoroplethController,
+    BubbleMapController,
     GeoFeature,
     ColorScale,
-    ProjectionScale);
+    ProjectionScale,
+    SizeScale,
+    MatrixController,
+    MatrixElement,
+    TreemapController,
+    TreemapElement,
+    BoxPlotController,
+    BoxAndWiskers,
+    ViolinController,
+    Violin,
+    LinearScale,
+    CategoryScale,
+    ForceDirectedGraphController,
+    DendrogramController,
+    TreeController,
+    EdgeLine,
+    PointElement,
+    SankeyController,
+    Flow,
+    ParallelCoordinatesController,
+    LogarithmicParallelCoordinatesController,
+    PCPScale,
+    LineSegment);
+
+ChartJS.registry.addElements(LinearAxis);
 
 
 
@@ -27,7 +58,7 @@ ChartJS.register(
  * This component renders ChartJs React component inside Dash App.
  */
 export default function ChartJs(props) {
-    const { id, setProps, style, type, data, options, toolbox, customPlugins, clickData, customJSFunctions } = props;
+    const { id, setProps, style, type, data, options, redraw, toolbox, customPlugins, clickData, customJSFunctions } = props;
 
     const [visibility, setVisibility] = useState('hidden');
     const [finalOptions, setFinalOptions] = useState(options);
@@ -157,6 +188,7 @@ export default function ChartJs(props) {
                 type={type}
                 data={finalData}
                 options={finalOptions}
+                redraw={redraw}
                 plugins={plugins}
                 onClick={(event) => {
                     var ele = getElementAtEvent(chartRef.current, event);
@@ -179,6 +211,7 @@ ChartJs.defaultProps = {
     options: {},
     clickData: {},
     toolbox: true,
+    redraw: false,
     customJSFunctions: {},
     customPlugins: {}
 };
@@ -204,6 +237,11 @@ ChartJs.propTypes = {
      * The options object that is passed into the Chart.js chart.
      */
     options: PropTypes.object,
+
+    /**
+     * Teardown and redraw chart on every update.
+     */
+    redraw: PropTypes.bool,
 
     /**
      * Toolbox with reset and download buttons for chart.

@@ -17,6 +17,7 @@ pip install dash-chartjs
 **type (str):** Chart.js chart type.<br><br>
 **data (dict):** The data object that is passed into the Chart.js chart.<br><br>
 **options (dict):** The options object that is passed into the Chart.js chart.<br><br>
+**redraw (boolean):** Teardown and redraw chart on every update.<br><br>
 **toolbox (boolean):** Toolbox with reset and download buttons for chart.<br><br>
 **customJSFunctions (dict):** Write custom JS functions in dict format.<br><br>
 **customPlugins (dict):** Write Plugins in dict format.<br><br>
@@ -99,7 +100,37 @@ https://user-images.githubusercontent.com/31138706/192035295-0a10eb80-0881-443b-
 ### [chartjs-chart-geo](https://www.sgratzl.com/chartjs-chart-geo/)
 
 **Example**
-![Image](https://github.com/user-attachments/assets/3c190e59-2dab-470c-b20b-0c435f7c9ed1)
+![choropleth](https://user-images.githubusercontent.com/4129778/78821942-8b974700-79da-11ea-988d-142f7788ffe6.png)
+
+### [chartjs-chart-boxplot](www.sgratzl.com/chartjs-chart-boxplot/)
+
+**Example**
+![boxplot](https://user-images.githubusercontent.com/4129778/42724341-9a6ec554-8770-11e8-99b5-626e34dafdb3.png)
+
+### [chartjs-chart-matrix](https://chartjs-chart-matrix.pages.dev/)
+
+**Example**
+![matrix](https://github.com/kurkle/chartjs-chart-matrix/blob/main/matrix.png)
+
+### [chartjs-chart-treemap](https://chartjs-chart-treemap.pages.dev/)
+
+**Example**
+![treemap](https://github.com/kurkle/chartjs-chart-treemap/blob/main/treemap.png)
+
+### [chartjs-chart-sankey](https://github.com/kurkle/chartjs-chart-sankey)
+
+**Example**
+![sankey](https://github.com/kurkle/chartjs-chart-sankey/blob/main/test/fixtures/energy.png)
+
+### [chartjs-chart-graph](www.sgratzl.com/chartjs-chart-graph/)
+
+**Example**
+![graph](https://user-images.githubusercontent.com/4129778/65398353-9bc03f80-dd84-11e9-8f14-339635c1ba4e.png)
+
+### [chartjs-chart-pcp](www.sgratzl.com/chartjs-chart-pcp/)
+
+**Example**
+![pcp](https://user-images.githubusercontent.com/4129778/79225882-bad80900-7e5d-11ea-89cf-f59f30987882.png)
 
 
 
