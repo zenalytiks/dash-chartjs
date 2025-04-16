@@ -102,7 +102,7 @@ https://user-images.githubusercontent.com/31138706/192035295-0a10eb80-0881-443b-
 **Example**
 ![choropleth](https://user-images.githubusercontent.com/4129778/78821942-8b974700-79da-11ea-988d-142f7788ffe6.png)
 
-### [chartjs-chart-boxplot](www.sgratzl.com/chartjs-chart-boxplot/)
+### [chartjs-chart-boxplot](https://sgratzl.com/chartjs-chart-boxplot/)
 
 **Example**
 ![boxplot](https://user-images.githubusercontent.com/4129778/42724341-9a6ec554-8770-11e8-99b5-626e34dafdb3.png)
@@ -122,12 +122,12 @@ https://user-images.githubusercontent.com/31138706/192035295-0a10eb80-0881-443b-
 **Example**
 ![sankey](https://github.com/kurkle/chartjs-chart-sankey/blob/main/test/fixtures/energy.png)
 
-### [chartjs-chart-graph](www.sgratzl.com/chartjs-chart-graph/)
+### [chartjs-chart-graph](https://sgratzl.com/chartjs-chart-graph/)
 
 **Example**
 ![graph](https://user-images.githubusercontent.com/4129778/65398353-9bc03f80-dd84-11e9-8f14-339635c1ba4e.png)
 
-### [chartjs-chart-pcp](www.sgratzl.com/chartjs-chart-pcp/)
+### [chartjs-chart-pcp](https://sgratzl.com/chartjs-chart-pcp/)
 
 **Example**
 ![pcp](https://user-images.githubusercontent.com/4129778/79225882-bad80900-7e5d-11ea-89cf-f59f30987882.png)
