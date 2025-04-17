@@ -1,6 +1,13 @@
 # AUTO GENERATED FILE - DO NOT EDIT
 
-from dash.development.base_component import Component, _explicitize_args
+import typing  # noqa: F401
+import numbers # noqa: F401
+from typing_extensions import TypedDict, NotRequired, Literal # noqa: F401
+from dash.development.base_component import Component
+try:
+    from dash.development.base_component import ComponentType # noqa: F401
+except ImportError:
+    ComponentType = typing.TypeVar("ComponentType", bound=Component)
 
 
 class ChartJs(Component):
@@ -31,9 +38,6 @@ Keyword arguments:
 - redraw (boolean; default False):
     Teardown and redraw chart on every update.
 
-- style (dict; optional):
-    Defines CSS styles which will override styles previously set.
-
 - toolbox (boolean; default True):
     Toolbox with reset and download buttons for chart.
 
@@ -43,8 +47,23 @@ Keyword arguments:
     _base_nodes = ['children']
     _namespace = 'dash_chartjs'
     _type = 'ChartJs'
-    @_explicitize_args
-    def __init__(self, id=Component.UNDEFINED, type=Component.UNDEFINED, data=Component.UNDEFINED, options=Component.UNDEFINED, redraw=Component.UNDEFINED, toolbox=Component.UNDEFINED, clickData=Component.UNDEFINED, customJSFunctions=Component.UNDEFINED, customPlugins=Component.UNDEFINED, style=Component.UNDEFINED, **kwargs):
+
+    _explicitize_dash_init = True
+
+    def __init__(
+        self,
+        id: typing.Optional[typing.Union[str, dict]] = None,
+        type: typing.Optional[str] = None,
+        data: typing.Optional[dict] = None,
+        options: typing.Optional[dict] = None,
+        redraw: typing.Optional[bool] = None,
+        toolbox: typing.Optional[bool] = None,
+        clickData: typing.Optional[dict] = None,
+        customJSFunctions: typing.Optional[dict] = None,
+        customPlugins: typing.Optional[dict] = None,
+        style: typing.Optional[typing.Any] = None,
+        **kwargs
+    ):
         self._prop_names = ['id', 'clickData', 'customJSFunctions', 'customPlugins', 'data', 'options', 'redraw', 'style', 'toolbox', 'type']
         self._valid_wildcard_attributes =            []
         self.available_properties = ['id', 'clickData', 'customJSFunctions', 'customPlugins', 'data', 'options', 'redraw', 'style', 'toolbox', 'type']

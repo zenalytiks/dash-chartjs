@@ -110,17 +110,17 @@ https://user-images.githubusercontent.com/31138706/192035295-0a10eb80-0881-443b-
 ### [chartjs-chart-matrix](https://chartjs-chart-matrix.pages.dev/)
 
 **Example**
-![matrix](https://github.com/kurkle/chartjs-chart-matrix/blob/main/matrix.png)
+![matrix](https://github.com/user-attachments/assets/85f47936-b20b-4a5b-bcfc-ec9b49760467)
 
 ### [chartjs-chart-treemap](https://chartjs-chart-treemap.pages.dev/)
 
 **Example**
-![treemap](https://github.com/kurkle/chartjs-chart-treemap/blob/main/treemap.png)
+![treemap](https://github.com/user-attachments/assets/bffcba23-9257-401f-aded-f6929dab3a45)
 
 ### [chartjs-chart-sankey](https://github.com/kurkle/chartjs-chart-sankey)
 
 **Example**
-![sankey](https://github.com/kurkle/chartjs-chart-sankey/blob/main/test/fixtures/energy.png)
+![sankey](https://github.com/user-attachments/assets/6f094f22-d83a-41d9-bd0b-c62c6ee18046)
 
 ### [chartjs-chart-graph](https://sgratzl.com/chartjs-chart-graph/)
 
