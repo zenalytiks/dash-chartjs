@@ -16,7 +16,8 @@ chart = dbc.Col(
                 'datasets': [
                      {
                          'label': attr,
-                         'data': [car[attr] for car in pcp_sample_data]
+                         'data': [car[attr] for car in pcp_sample_data],
+                         'backgroundColor': 'none'
                      }
                      for attr in attrs
                  ]
