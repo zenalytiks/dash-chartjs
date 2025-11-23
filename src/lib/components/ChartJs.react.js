@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import { Chart as ChartJS, LinearScale, CategoryScale, PointElement, registerables } from 'chart.js';
 import { Chart, getElementAtEvent } from 'react-chartjs-2';
+import * as Utils from '../Utils';
 
 import 'chartjs-adapter-moment';
 import zoomPlugin from 'chartjs-plugin-zoom';
@@ -107,7 +108,23 @@ export default function ChartJs(props) {
         deepInject(newObj);
         return newObj;
     };
-    
+
+    // Make Utils available globally for custom functions
+    if (typeof window !== 'undefined') {
+        window.Utils = Utils;
+    }
+
+    // Hook to resize chart on window size changes
+    useEffect(() => {
+        const handleResize = () => {
+            if (chartRef.current) {
+                chartRef.current.resize();
+            }
+        };
+
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
 
     useEffect(() => {
         const processedOptions = injectJSFunctions(options, customJSFunctions);
