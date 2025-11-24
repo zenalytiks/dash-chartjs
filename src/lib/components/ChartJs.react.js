@@ -59,11 +59,12 @@ ChartJS.registry.addElements(LinearAxis);
  * This component renders ChartJs React component inside Dash App.
  */
 export default function ChartJs(props) {
-    const { id, setProps, style, type, data, options, redraw, toolbox, customPlugins, clickData, customJSFunctions } = props;
+    const { id, setProps, style, type, data, options, redraw, toolbox, customPlugins, clickData, customJSFunctions, actions } = props;
 
     const [visibility, setVisibility] = useState('hidden');
     const [finalOptions, setFinalOptions] = useState(options);
     const [finalData, setFinalData] = useState(data);
+    const [parsedActions, setParsedActions] = useState([]);
     const chartRef = useRef(null);
 
     const downloadChart = () => {
@@ -152,6 +153,22 @@ export default function ChartJs(props) {
     
         return plugins;
     };
+
+    const parseActions = (actionsList) => {
+        if (!actionsList || !Array.isArray(actionsList)) return [];
+
+        return actionsList.map((action) => {
+            try {
+                return {
+                    name: action.name,
+                    handler: eval(`(${action.handler})`)
+                };
+            } catch (e) {
+                console.warn(`Failed to parse action "${action.name}"`, e);
+                return null;
+            }
+        }).filter(action => action !== null);
+    };
     
 
     const plugins = useMemo(() => {
@@ -162,7 +179,11 @@ export default function ChartJs(props) {
         }
     
         return pluginList;
-    }, [customPlugins]);    
+    }, [customPlugins]);
+
+    useEffect(() => {
+        setParsedActions(parseActions(actions));
+    }, [actions]);    
 
     
     return (
@@ -176,13 +197,11 @@ export default function ChartJs(props) {
                 <div
                     style={{
                         visibility: visibility,
-                        backgroundColor: 'rgba(0,0,0,0.1)',
-                        borderRadius: '5px',
                         float: 'right'
                     }}
                 >
                     <button
-                        style={{ background: 'rgba(0,0,0,0)', border: 'none', fontSize: '1.2rem' }}
+                        style={{ backgroundColor: 'rgba(40, 44, 52, .05)', borderColor: 'transparent', fontSize: '1.2rem' }}
                         title='Download'
                         value='print'
                         onClick={downloadChart}
@@ -191,7 +210,7 @@ export default function ChartJs(props) {
                     </button>
 
                     <button
-                        style={{ background: 'rgba(0,0,0,0)', border: 'none', fontSize: '1.2rem' }}
+                        style={{ backgroundColor: 'rgba(40, 44, 52, .05)', borderColor: 'transparent', fontSize: '1.2rem' }}
                         title='Reset'
                         onClick={resetChart}
                     >
@@ -217,6 +236,44 @@ export default function ChartJs(props) {
                     });
                 }}
             />
+
+            {parsedActions.length > 0 && (
+                <div style={{ marginTop: '20px', display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
+                    {parsedActions.map((action, index) => (
+                        <button
+                            key={index}
+                            onClick={() => action.handler(chartRef.current)}
+                            style={{
+                                padding: '8px 16px',
+                                margin: '0 8px 8px 0',
+                                backgroundColor: 'rgba(40, 44, 52, .05)',
+                                color: '#3080d0',
+                                border: '1px solid transparent',
+                                borderRadius: '6px',
+                                cursor: 'pointer',
+                                fontSize: '0.8rem',
+                                display: 'inline-block',
+                                textDecoration: 'none',
+                                transition: 'background .25s, border-color .25s'
+                            }}
+                            onMouseOver={(e) => {
+                                e.target.style.backgroundColor = 'rgba(48,128,208,.15)';
+                                e.target.style.borderColor = 'rgba(48,128,208,.2)';
+                            }}
+                            onMouseOut={(e) => {
+                                e.target.style.backgroundColor = 'rgba(40, 44, 52, .05)';
+                                e.target.style.borderColor = 'transparent';
+                            }}
+                            onMouseDown={(e) => {
+                                e.target.style.backgroundColor = 'rgba(48,128,208,.3)';
+                                e.target.style.borderColor = 'rgba(48,128,208,.4)';
+                            }}
+                        >
+                            {action.name}
+                        </button>
+                    ))}
+                </div>
+            )}
         </div>
     );
 };
@@ -230,7 +287,8 @@ ChartJs.defaultProps = {
     toolbox: true,
     redraw: false,
     customJSFunctions: {},
-    customPlugins: {}
+    customPlugins: {},
+    actions: []
 };
 
 ChartJs.propTypes = {
@@ -279,6 +337,17 @@ ChartJs.propTypes = {
      * Write Plugins in dict format.
      */
     customPlugins: PropTypes.object,
+
+    /**
+     * List of action objects with name and handler properties.
+     * Each action will be rendered as a button below the chart.
+     */
+    actions: PropTypes.arrayOf(
+        PropTypes.shape({
+            name: PropTypes.string.isRequired,
+            handler: PropTypes.string.isRequired
+        })
+    ),
 
     /**
      * Defines CSS styles which will override styles previously set.

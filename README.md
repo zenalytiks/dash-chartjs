@@ -21,6 +21,7 @@ pip install dash-chartjs
 **toolbox (boolean):** Toolbox with reset and download buttons for chart.<br><br>
 **customJSFunctions (dict):** Write custom JS functions in dict format.<br><br>
 **customPlugins (dict):** Write Plugins in dict format.<br><br>
+**actions (dict):** List of action objects with name and handler properties. Each action will be rendered as a button below the chart.<br><br> 
 **clickData (dict):** clickData returns the datasetIndex and index of data point clicked.<br><br>
 **style (dict):** Defines CSS styles which will override styles previously set.<br><br>
 

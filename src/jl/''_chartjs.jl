@@ -9,6 +9,11 @@ A ChartJs component.
 This component renders ChartJs React component inside Dash App.
 Keyword arguments:
 - `id` (String; optional): The ID used to identify this component in Dash callbacks.
+- `actions` (optional): List of action objects with name and handler properties.
+Each action will be rendered as a button below the chart.. actions has the following type: Array of lists containing elements 'name', 'handler'.
+Those elements have the following types:
+  - `name` (String; required)
+  - `handler` (String; required)s
 - `clickData` (Dict; optional): clickData returns the datasetIndex and index of data point clicked.
 - `customJSFunctions` (Dict; optional): Write custom JS functions in dict format.
 - `customPlugins` (Dict; optional): Write Plugins in dict format.
@@ -20,7 +25,7 @@ Keyword arguments:
 - `type` (String; optional): Chart.js chart type.
 """
 function ''_chartjs(; kwargs...)
-        available_props = Symbol[:id, :clickData, :customJSFunctions, :customPlugins, :data, :options, :redraw, :style, :toolbox, :type]
+        available_props = Symbol[:id, :actions, :clickData, :customJSFunctions, :customPlugins, :data, :options, :redraw, :style, :toolbox, :type]
         wild_props = Symbol[]
         return Component("''_chartjs", "ChartJs", "dash_chartjs", available_props, wild_props; kwargs...)
 end

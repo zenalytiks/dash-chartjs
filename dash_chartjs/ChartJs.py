@@ -27,6 +27,16 @@ Keyword arguments:
 - id (string; optional):
     The ID used to identify this component in Dash callbacks.
 
+- actions (list of dicts; optional):
+    List of action objects with name and handler properties.  Each
+    action will be rendered as a button below the chart.
+
+    `actions` is a list of dicts with keys:
+
+    - name (string; required)
+
+    - handler (string; required)
+
 - clickData (dict; optional):
     clickData returns the datasetIndex and index of data point
     clicked.
@@ -55,6 +65,13 @@ Keyword arguments:
     _base_nodes = ['children']
     _namespace = 'dash_chartjs'
     _type = 'ChartJs'
+    Actions = TypedDict(
+        "Actions",
+            {
+            "name": str,
+            "handler": str
+        }
+    )
 
 
     def __init__(
@@ -68,12 +85,13 @@ Keyword arguments:
         clickData: typing.Optional[dict] = None,
         customJSFunctions: typing.Optional[dict] = None,
         customPlugins: typing.Optional[dict] = None,
+        actions: typing.Optional[typing.Sequence["Actions"]] = None,
         style: typing.Optional[typing.Any] = None,
         **kwargs
     ):
-        self._prop_names = ['id', 'clickData', 'customJSFunctions', 'customPlugins', 'data', 'options', 'redraw', 'style', 'toolbox', 'type']
+        self._prop_names = ['id', 'actions', 'clickData', 'customJSFunctions', 'customPlugins', 'data', 'options', 'redraw', 'style', 'toolbox', 'type']
         self._valid_wildcard_attributes =            []
-        self.available_properties = ['id', 'clickData', 'customJSFunctions', 'customPlugins', 'data', 'options', 'redraw', 'style', 'toolbox', 'type']
+        self.available_properties = ['id', 'actions', 'clickData', 'customJSFunctions', 'customPlugins', 'data', 'options', 'redraw', 'style', 'toolbox', 'type']
         self.available_wildcard_properties =            []
         _explicit_args = kwargs.pop('_explicit_args')
         _locals = locals()

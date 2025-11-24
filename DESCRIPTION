@@ -1,6 +1,6 @@
 Package: dashChartjs
 Title: A Dash Component library for ChartJs.
-Version: 1.2.2
+Version: 1.3.0
 Description: A Dash Component library for ChartJs.
 Depends: R (>= 3.0.2)
 Imports: 
